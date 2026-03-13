@@ -128,3 +128,4 @@ vercel
 ```
 
 Set all environment variables in your Vercel project settings.
+# Acceleratedgrowth
