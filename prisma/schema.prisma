@@ -1,0 +1,576 @@
+// ============================================================
+// Outbound Marketing Agency — Database Schema
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================================
+// MULTI-TENANCY & AUTH
+// ============================================================
+
+model Organization {
+  id        String   @id @default(cuid())
+  clerkOrgId String  @unique
+  name      String
+  slug      String   @unique
+  logo      String?
+  website   String?
+  industry  String?
+  plan      Plan     @default(STARTER)
+  status    OrgStatus @default(ONBOARDING)
+
+  // Stripe billing
+  stripeCustomerId     String?  @unique
+  stripeSubscriptionId String?  @unique
+  stripePriceId        String?
+  billingEmail         String?
+  mrr                  Int      @default(0) // in cents
+
+  // Settings
+  brandColors Json?    // { primary: "#xxx", secondary: "#xxx" }
+  timezone    String   @default("America/New_York")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  members       Member[]
+  campaigns     Campaign[]
+  contacts      Contact[]
+  leads         Lead[]
+  deals         Deal[]
+  reports       Report[]
+  onboarding    Onboarding?
+  invoices      Invoice[]
+  activityLogs  ActivityLog[]
+  integrations  Integration[]
+
+  @@index([clerkOrgId])
+  @@index([stripeCustomerId])
+}
+
+model Member {
+  id        String   @id @default(cuid())
+  clerkUserId String @unique
+  email     String
+  name      String
+  avatar    String?
+  role      Role     @default(VIEWER)
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignedDeals Deal[]
+  activityLogs  ActivityLog[]
+
+  @@index([orgId])
+  @@index([clerkUserId])
+}
+
+enum Plan {
+  STARTER
+  GROWTH
+  SCALE
+  ENTERPRISE
+}
+
+enum OrgStatus {
+  ONBOARDING
+  ACTIVE
+  PAUSED
+  CHURNED
+}
+
+enum Role {
+  ADMIN       // Your internal team - full access
+  CLIENT_ADMIN // Client admin - their org's data + billing
+  MANAGER     // Client manager - their org's data
+  VIEWER      // Client viewer - read-only dashboards
+}
+
+// ============================================================
+// LEAD CAPTURE & ATTRIBUTION
+// ============================================================
+
+model Lead {
+  id        String   @id @default(cuid())
+  email     String
+  name      String?
+  company   String?
+  phone     String?
+  website   String?
+  message   String?
+
+  // Attribution
+  source         String?  // utm_source
+  medium         String?  // utm_medium
+  campaign       String?  // utm_campaign
+  content        String?  // utm_content
+  term           String?  // utm_term
+  landingPage    String?
+  referrer       String?
+  gclid          String?
+  fbclid         String?
+
+  // First-touch vs last-touch
+  firstTouchSource  String?
+  firstTouchMedium  String?
+  lastTouchSource   String?
+  lastTouchMedium   String?
+
+  // Qualification
+  companySize    String?
+  budget         String?
+  interest       String?  // which service
+  icpScore       Int?     // 0-100
+
+  // Engagement
+  pagesViewed    Int      @default(0)
+  timeOnSite     Int      @default(0) // seconds
+  chatEngaged    Boolean  @default(false)
+  contentDownloaded String[] // lead magnet IDs
+
+  // Status
+  status    LeadStatus @default(NEW)
+  convertedAt DateTime?
+
+  // Enrichment data
+  enrichmentData Json?  // Clearbit/Apollo response
+  linkedinUrl    String?
+  industry       String?
+  jobTitle       String?
+
+  // Relations
+  orgId     String?
+  org       Organization? @relation(fields: [orgId], references: [id])
+  dealId    String?
+  deal      Deal?    @relation(fields: [dealId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([orgId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  DISCOVERY_BOOKED
+  DISCOVERY_COMPLETE
+  PROPOSAL_SENT
+  NEGOTIATION
+  WON
+  LOST
+  DISQUALIFIED
+}
+
+// ============================================================
+// PIPELINE & DEALS
+// ============================================================
+
+model Deal {
+  id        String   @id @default(cuid())
+  title     String
+  value     Int      @default(0) // monthly retainer in cents
+  currency  String   @default("usd")
+
+  stage     DealStage @default(DISCOVERY_BOOKED)
+  probability Int     @default(20) // percentage
+
+  // Contract details
+  contractLength  Int?     // months
+  setupFee        Int?     // one-time in cents
+  startDate       DateTime?
+  closeDate       DateTime?
+  lostReason      String?
+
+  // Services selected
+  services  String[]  // ["cold_email", "linkedin", "lead_research"]
+
+  // Relations
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  assignedToId String?
+  assignedTo   Member?  @relation(fields: [assignedToId], references: [id])
+  leads     Lead[]
+  notes     DealNote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([stage])
+  @@index([createdAt])
+}
+
+model DealNote {
+  id        String   @id @default(cuid())
+  content   String
+  dealId    String
+  deal      Deal     @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  authorId  String
+  createdAt DateTime @default(now())
+
+  @@index([dealId])
+}
+
+enum DealStage {
+  DISCOVERY_BOOKED
+  DISCOVERY_COMPLETE
+  PROPOSAL_SENT
+  NEGOTIATION
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+// ============================================================
+// CAMPAIGNS & METRICS (Client Portal Data)
+// ============================================================
+
+model Campaign {
+  id        String   @id @default(cuid())
+  name      String
+  status    CampaignStatus @default(DRAFT)
+  type      CampaignType   @default(COLD_EMAIL)
+
+  // External tool reference
+  externalId    String?  // ID in Instantly/Smartlead/etc
+  externalTool  String?  // "instantly", "smartlead", "lemlist"
+
+  // Config
+  sendingEmail  String?
+  sendingDomain String?
+  dailyLimit    Int?
+  targetAudience String?
+
+  // Relations
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  metrics   CampaignMetric[]
+  sequences Sequence[]
+
+  startedAt DateTime?
+  pausedAt  DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([status])
+}
+
+model CampaignMetric {
+  id        String   @id @default(cuid())
+  date      DateTime @db.Date
+
+  // Volume
+  emailsSent      Int @default(0)
+  emailsDelivered Int @default(0)
+  bounces         Int @default(0)
+
+  // Engagement
+  opens           Int @default(0)
+  uniqueOpens     Int @default(0)
+  clicks          Int @default(0)
+  replies         Int @default(0)
+  positiveReplies Int @default(0)
+
+  // Outcomes
+  meetingsBooked  Int @default(0)
+  meetingsHeld    Int @default(0)
+  noShows         Int @default(0)
+
+  // Deliverability
+  spamComplaints  Int @default(0)
+  unsubscribes    Int @default(0)
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([campaignId, date])
+  @@index([date])
+  @@index([campaignId])
+}
+
+model Sequence {
+  id        String   @id @default(cuid())
+  name      String
+  steps     Json     // Array of { stepNumber, type, subject, body, delay }
+  status    String   @default("draft")
+
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([campaignId])
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+  ARCHIVED
+}
+
+enum CampaignType {
+  COLD_EMAIL
+  LINKEDIN
+  MULTI_CHANNEL
+}
+
+// ============================================================
+// CONTACTS (Prospect Database per Client)
+// ============================================================
+
+model Contact {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  phone     String?
+  jobTitle  String?
+  company   String?
+  companyDomain String?
+  linkedinUrl   String?
+  location  String?
+
+  // Enrichment
+  enrichedAt     DateTime?
+  enrichmentData Json?
+
+  // Status
+  status    ContactStatus @default(ACTIVE)
+  tags      String[]
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([email])
+  @@index([status])
+}
+
+enum ContactStatus {
+  ACTIVE
+  BOUNCED
+  UNSUBSCRIBED
+  REPLIED
+  MEETING_BOOKED
+  DO_NOT_CONTACT
+}
+
+// ============================================================
+// CLIENT ONBOARDING
+// ============================================================
+
+model Onboarding {
+  id        String   @id @default(cuid())
+
+  // Step completion
+  icpComplete       Boolean @default(false)
+  messagingComplete Boolean @default(false)
+  domainComplete    Boolean @default(false)
+  assetsComplete    Boolean @default(false)
+  crmComplete       Boolean @default(false)
+  calendarComplete  Boolean @default(false)
+  approvalComplete  Boolean @default(false)
+
+  // ICP Data
+  targetIndustries  String[]
+  targetCompanySizes String[]
+  targetGeographies String[]
+  targetTitles      String[]
+  exclusions        String[]
+
+  // Messaging
+  valueProps        String[]
+  tonePreference    String?
+  painPoints        String[]
+  differentiators   String[]
+  avoidPhrases      String[]
+
+  // Domain & Email
+  sendingDomains    String[]
+  emailAccounts     Json?     // Array of { email, provider, status }
+
+  // Assets
+  assets            Json?     // Array of { name, url, type }
+
+  // CRM
+  crmType           String?   // "hubspot", "salesforce", "pipedrive"
+  crmConnected      Boolean   @default(false)
+
+  // Calendar
+  calendarProvider  String?   // "google", "microsoft"
+  calendarConnected Boolean   @default(false)
+  bookingLink       String?
+
+  // Approval
+  launchDate        DateTime?
+  approvedBy        String?
+  approvedAt        DateTime?
+
+  orgId     String   @unique
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================================
+// BILLING & INVOICES
+// ============================================================
+
+model Invoice {
+  id        String   @id @default(cuid())
+  stripeInvoiceId String @unique
+  amount    Int      // in cents
+  currency  String   @default("usd")
+  status    InvoiceStatus
+  paidAt    DateTime?
+  dueDate   DateTime?
+  pdfUrl    String?
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([orgId])
+  @@index([status])
+}
+
+enum InvoiceStatus {
+  DRAFT
+  OPEN
+  PAID
+  VOID
+  UNCOLLECTIBLE
+}
+
+// ============================================================
+// REPORTS
+// ============================================================
+
+model Report {
+  id        String   @id @default(cuid())
+  type      ReportType
+  period    String   // "2024-W12", "2024-03", "2024-Q1"
+  title     String
+  data      Json     // Aggregated metrics
+  pdfUrl    String?
+  sentAt    DateTime?
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([orgId])
+  @@index([type, period])
+}
+
+enum ReportType {
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+}
+
+// ============================================================
+// INTEGRATIONS
+// ============================================================
+
+model Integration {
+  id        String   @id @default(cuid())
+  type      String   // "hubspot", "google_calendar", "slack", "instantly"
+  status    String   @default("connected")
+
+  // OAuth tokens (encrypted in production)
+  accessToken  String?
+  refreshToken String?
+  expiresAt    DateTime?
+  metadata     Json?   // tool-specific config
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([orgId, type])
+  @@index([orgId])
+}
+
+// ============================================================
+// ACTIVITY LOG & AUDIT TRAIL
+// ============================================================
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String   // "campaign.launched", "lead.created", "deal.stage_changed"
+  details   Json?
+  ipAddress String?
+
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  memberId  String?
+  member    Member?  @relation(fields: [memberId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([orgId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ============================================================
+// REFERRAL PROGRAM
+// ============================================================
+
+model Referral {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  referrerEmail String
+  referrerName  String?
+
+  // Commission
+  commissionType  String  @default("flat") // "flat", "percentage", "recurring"
+  commissionValue Int     @default(0)      // cents or basis points
+
+  // Tracking
+  clicks          Int     @default(0)
+  signups         Int     @default(0)
+  conversions     Int     @default(0)
+  totalEarned     Int     @default(0) // cents
+  totalPaid       Int     @default(0) // cents
+
+  status    String   @default("active")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([code])
+  @@index([referrerEmail])
+}
