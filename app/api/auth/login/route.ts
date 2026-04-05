@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { db } from "@/lib/db";
 import { verifyPassword } from "@/lib/auth";
 import { attachSession } from "@/lib/session";
+import { DEMO_MODE, DEMO_MEMBER } from "@/lib/demo-mode";
 
 const Schema = z.object({
   email: z.string().email().toLowerCase(),
@@ -18,6 +18,13 @@ export async function POST(req: NextRequest) {
 
   const { email, password } = parsed.data;
 
+  // In demo mode bypass DB entirely — any credentials work
+  if (DEMO_MODE) {
+    const res = NextResponse.json({ ok: true, redirectTo: "/dashboard" });
+    return attachSession(res, { sub: DEMO_MEMBER.userId, email, orgId: DEMO_MEMBER.orgId });
+  }
+
+  const { db } = await import("@/lib/db");
   const user = await db.user.findUnique({ where: { email } });
   if (!user) {
     return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
