@@ -193,7 +193,7 @@ async function processLicense(file: string, orgId: string, label: string) {
 
 async function main() {
   // Get the admin org
-  const org = await db.organization.findFirst({ where: { slug: "accelrated-growth" } });
+  const org = await db.organization.findFirst({ where: { slug: "accelerated-growth" } });
   if (!org) { console.error("Run seed-admin.ts first"); process.exit(1); }
   const orgId = org.id;
 

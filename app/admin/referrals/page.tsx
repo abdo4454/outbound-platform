@@ -26,7 +26,7 @@ export default async function ReferralsPage() {
   const totalPaid = referrals.reduce((s, r) => s + r.totalPaid, 0);
   const totalConversions = referrals.reduce((s, r) => s + r.conversions, 0);
   const totalClicks = referrals.reduce((s, r) => s + r.clicks, 0);
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
   return (
     <div className="space-y-6">

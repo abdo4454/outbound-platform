@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Outbound playbooks, cold email templates, go-to-market strategies, and appointment setting guides for B2B SaaS founders and sales leaders.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/blog`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/blog`,
   },
 };
 

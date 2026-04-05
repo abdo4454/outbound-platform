@@ -44,7 +44,7 @@ export default async function IntegrationsPage() {
   }
 
   const supportEmail =
-    process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com";
+    process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com";
 
   return (
     <div className="space-y-6 max-w-2xl">

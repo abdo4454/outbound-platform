@@ -6,7 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -41,10 +41,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     "@type": "Article",
     headline: post.headline,
     description: post.metaDescription,
-    author: { "@type": "Organization", name: "Accelrated Growth", url: APP_URL },
+    author: { "@type": "Organization", name: "Accelerated Growth", url: APP_URL },
     publisher: {
       "@type": "Organization",
-      name: "Accelrated Growth",
+      name: "Accelerated Growth",
       url: APP_URL,
       logo: { "@type": "ImageObject", url: `${APP_URL}/logo-icon.svg` },
     },

@@ -11,7 +11,7 @@ export default function SignUpPage() {
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
         <h1 className="font-display text-2xl font-bold text-gray-900">Create your account</h1>
-        <p className="text-gray-500 mt-2">Get started with Accelrated Growth</p>
+        <p className="text-gray-500 mt-2">Get started with Accelerated Growth</p>
       </div>
       <SignUpForm />
     </div>

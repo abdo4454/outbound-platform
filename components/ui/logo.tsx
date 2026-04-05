@@ -15,7 +15,7 @@ export function Logo({ dark = false, className }: LogoProps) {
           dark ? "text-midnight-900" : "text-white"
         )}
       >
-        Accelrated{" "}
+        Accelerated{" "}
         <span className={cn(dark ? "text-brand-600" : "text-brand-300")}>
           Growth
         </span>

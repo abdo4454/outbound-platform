@@ -97,7 +97,7 @@ STRONG: "Saw [Company] posted 4 SDR roles this month — usually means there's e
           "The fix is not complicated but it takes patience. Separate sending domains (never your primary). Proper DNS records. A warm-up period of 3–4 weeks before hitting volume. No more than 40–50 emails per day per inbox. Multiple inboxes rotated across campaigns. We cover this in full in our deliverability guide.",
         ],
         bullets: [
-          "Use sending domains separate from your primary (e.g., getaccelrated.com instead of accelratedgrowth.com)",
+          "Use sending domains separate from your primary (e.g., getaccelerated.com instead of acceleratedgrowth.com)",
           "Set up SPF, DKIM, and DMARC on every sending domain",
           "Warm up new inboxes for 3–4 weeks before sending campaigns",
           "Cap at 40–50 emails/day/inbox — rotate across multiple inboxes",
@@ -433,7 +433,7 @@ Verify all three at: https://mxtoolbox.com/SuperTool.aspx`,
         body: [
           "Never send cold email from your primary business domain. This is the single most important deliverability rule.",
           "Here's why: if your cold email campaigns get your domain flagged (which is almost inevitable at scale), your primary domain — the one you use for customer emails, support tickets, investor updates — gets flagged too. Recovering a flagged primary domain can take months and cost real business.",
-          "Set up 2–4 secondary sending domains that look like your brand but are not your primary domain. If your main domain is accelratedgrowth.com, your sending domains might be: getaccelrated.com, tryaccelrated.com, accelratedgrowth.io. Each domain runs its own warmup cycle independently.",
+          "Set up 2–4 secondary sending domains that look like your brand but are not your primary domain. If your main domain is acceleratedgrowth.com, your sending domains might be: getaccelerated.com, tryaccelerated.com, acceleratedgrowth.io. Each domain runs its own warmup cycle independently.",
         ],
         callout: {
           type: "warning",

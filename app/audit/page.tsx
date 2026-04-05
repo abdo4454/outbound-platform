@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Get a free outbound audit for your B2B SaaS. We analyze your ICP, cold email sequences, competitor outbound tactics, and meeting volume potential — and hand you a specific action plan.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/audit`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/audit`,
   },
   openGraph: {
     title: "Free B2B SaaS Outbound Audit | ICP Gap Analysis & Cold Email Review",

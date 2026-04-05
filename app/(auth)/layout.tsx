@@ -12,7 +12,7 @@ export default function AuthLayout({
           <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
             <span className="text-white font-bold text-sm">OP</span>
           </div>
-          <span className="font-display font-bold text-lg text-gray-900">Accelrated Growth</span>
+          <span className="font-display font-bold text-lg text-gray-900">Accelerated Growth</span>
         </Link>
       </header>
 
@@ -21,7 +21,7 @@ export default function AuthLayout({
       </div>
 
       <footer className="py-6 text-center text-sm text-gray-400">
-        &copy; {new Date().getFullYear()} Accelrated Growth. All rights reserved.
+        &copy; {new Date().getFullYear()} Accelerated Growth. All rights reserved.
       </footer>
     </div>
   );

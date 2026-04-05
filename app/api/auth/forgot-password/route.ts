@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`;
     await sendEmail({
       to: email,
-      subject: "Reset your Accelrated Growth password",
+      subject: "Reset your Accelerated Growth password",
       html: `
         <p>Hi ${user.name},</p>
         <p>Click the link below to reset your password. This link expires in 1 hour.</p>

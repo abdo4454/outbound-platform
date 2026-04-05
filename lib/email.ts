@@ -10,7 +10,7 @@ function createTransporter() {
   });
 }
 
-const FROM = process.env.EMAIL_FROM || `Accelrated Growth <${process.env.GMAIL_USER}>`;
+const FROM = process.env.EMAIL_FROM || `Accelerated Growth <${process.env.GMAIL_USER}>`;
 
 export async function sendEmail({
   to,
@@ -30,7 +30,7 @@ export async function sendEmail({
 export async function sendWelcomeEmail(to: string, name: string) {
   return sendEmail({
     to,
-    subject: "Welcome to Accelrated Growth — Let's get you set up",
+    subject: "Welcome to Accelerated Growth — Let's get you set up",
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #1a1f35;">Welcome aboard, ${name}!</h1>

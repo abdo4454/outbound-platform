@@ -15,15 +15,15 @@ import { CTASection } from "@/components/marketing/cta-section";
 import { Footer } from "@/components/marketing/footer";
 import { ExitIntentPopup } from "@/components/marketing/exit-intent-popup";
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
 export const metadata: Metadata = {
   title: "B2B SaaS Appointment Setting & Cold Email Outbound Agency",
   description:
-    "Accelrated Growth builds done-for-you outbound engines for B2B SaaS companies. Cold email, LinkedIn outreach, ICP research, and appointment setting — 20–50 qualified sales meetings per month, fully managed.",
+    "Accelerated Growth builds done-for-you outbound engines for B2B SaaS companies. Cold email, LinkedIn outreach, ICP research, and appointment setting — 20–50 qualified sales meetings per month, fully managed.",
   alternates: { canonical: APP_URL },
   openGraph: {
-    title: "B2B SaaS Appointment Setting & Cold Email Outbound Agency | Accelrated Growth",
+    title: "B2B SaaS Appointment Setting & Cold Email Outbound Agency | Accelerated Growth",
     description:
       "Done-for-you cold email outreach, LinkedIn outbound, and appointment setting for B2B SaaS. We build your go-to-market engine and fill your calendar with qualified meetings.",
     url: APP_URL,
@@ -34,7 +34,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "B2B SaaS Outbound & Appointment Setting",
-  provider: { "@type": "Organization", name: "Accelrated Growth", url: APP_URL },
+  provider: { "@type": "Organization", name: "Accelerated Growth", url: APP_URL },
   serviceType: "B2B Outbound Sales & Appointment Setting",
   description:
     "Done-for-you outbound engine for B2B SaaS companies. Includes cold email outreach, LinkedIn outbound, ICP research, copywriting, sending infrastructure, reply management, and appointment setting.",
@@ -145,7 +145,7 @@ const faqSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Accelrated Growth",
+  name: "Accelerated Growth",
   url: APP_URL,
   potentialAction: {
     "@type": "SearchAction",

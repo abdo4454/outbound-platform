@@ -126,7 +126,7 @@ function InlineField({
 
 export function SettingsClient({ member, org, members, bookingLink }: Props) {
   const [loadingPortal, setLoadingPortal] = useState(false);
-  const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com";
+  const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com";
 
   async function patchSettings(data: Record<string, string>) {
     await fetch("/api/settings", {

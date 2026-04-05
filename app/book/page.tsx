@@ -8,12 +8,12 @@ import { PixelViewContent } from "@/components/analytics/pixel-view-content";
 export const metadata: Metadata = {
   title: "Book a Free B2B Outbound Strategy Call | Appointment Setting Consultation",
   description:
-    "Book a free 30-minute strategy call with Accelrated Growth. We'll map your B2B SaaS ICP, estimate qualified meeting volume, and give you a go-to-market outbound plan — no pitch, just strategy.",
+    "Book a free 30-minute strategy call with Accelerated Growth. We'll map your B2B SaaS ICP, estimate qualified meeting volume, and give you a go-to-market outbound plan — no pitch, just strategy.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/book`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/book`,
   },
   openGraph: {
-    title: "Book a Free B2B SaaS Outbound Strategy Call | Accelrated Growth",
+    title: "Book a Free B2B SaaS Outbound Strategy Call | Accelerated Growth",
     description:
       "30-minute free strategy call. ICP mapping, meeting volume estimate, and a go-to-market outbound plan for your SaaS — whether you work with us or not.",
   },

@@ -13,13 +13,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const cs = CASE_STUDIES.find((c) => c.slug === params.slug);
   if (!cs) return {};
-  const base = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+  const base = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
   return {
     title: `${cs.company} — B2B SaaS Cold Email & Appointment Setting Case Study`,
-    description: `${cs.result} See how Accelrated Growth built the outbound engine for this ${cs.stage} ${cs.industry} company using cold email and appointment setting.`,
+    description: `${cs.result} See how Accelerated Growth built the outbound engine for this ${cs.stage} ${cs.industry} company using cold email and appointment setting.`,
     alternates: { canonical: `${base}/case-studies/${cs.slug}` },
     openGraph: {
-      title: `${cs.company} Cold Email Case Study | Accelrated Growth`,
+      title: `${cs.company} Cold Email Case Study | Accelerated Growth`,
       description: `${cs.result} ${cs.timeframe} to results using cold email outreach and appointment setting.`,
       url: `${base}/case-studies/${cs.slug}`,
     },

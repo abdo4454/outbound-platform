@@ -33,7 +33,7 @@ export const DEMO_MEMBER = {
   orgId: "demo-org-id",
   role: "ADMIN" as const,
   name: "Demo Admin",
-  email: "demo@accelratedgrowth.com",
+  email: "demo@acceleratedgrowth.com",
   avatar: null as string | null,
   createdAt: new Date("2026-01-01"),
   updatedAt: new Date("2026-01-01"),

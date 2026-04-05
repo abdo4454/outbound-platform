@@ -8,9 +8,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "B2B SaaS Outbound Case Studies | Cold Email & Appointment Setting Results",
   description:
-    "Real B2B SaaS outbound results: 43 meetings/month with VP Engineering buyers, $2.4M pipeline in one quarter, 22.4% reply rates. See how Accelrated Growth's appointment setting and cold email engine performs.",
+    "Real B2B SaaS outbound results: 43 meetings/month with VP Engineering buyers, $2.4M pipeline in one quarter, 22.4% reply rates. See how Accelerated Growth's appointment setting and cold email engine performs.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/case-studies`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/case-studies`,
   },
   openGraph: {
     title: "B2B SaaS Outbound Case Studies | Cold Email & Appointment Setting",

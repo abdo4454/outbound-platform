@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "The complete cold email playbook for B2B SaaS companies. ICP research, sequence templates, subject line formulas, deliverability setup, and reply handling — everything to book 30+ meetings per month.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/resources/playbook`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/resources/playbook`,
   },
 };
 

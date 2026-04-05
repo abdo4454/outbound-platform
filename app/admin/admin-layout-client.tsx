@@ -47,7 +47,7 @@ export function AdminLayoutClient({
             {!collapsed && (
               <div>
                 <span className="font-display font-bold text-base text-white block leading-tight">
-                  Accelrated Growth
+                  Accelerated Growth
                 </span>
                 <span className="text-xs text-gray-500">Internal CRM</span>
               </div>

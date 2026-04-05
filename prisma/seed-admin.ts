@@ -17,12 +17,12 @@ async function main() {
   });
 
   // Create org if not already there
-  let org = await db.organization.findFirst({ where: { slug: "accelrated-growth" } });
+  let org = await db.organization.findFirst({ where: { slug: "accelerated-growth" } });
   if (!org) {
     org = await db.organization.create({
       data: {
-        name: "Accelrated Growth",
-        slug: "accelrated-growth",
+        name: "Accelerated Growth",
+        slug: "accelerated-growth",
         plan: "ENTERPRISE",
         status: "ACTIVE",
       },

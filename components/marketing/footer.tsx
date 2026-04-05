@@ -40,7 +40,7 @@ export function Footer() {
                 <span className="text-white font-bold text-sm">AG</span>
               </div>
               <span className="font-display font-bold text-lg text-gray-900">
-                Accelrated Growth
+                Accelerated Growth
               </span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
@@ -72,7 +72,7 @@ export function Footer() {
 
         <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Accelrated Growth. All rights reserved.
+            &copy; {new Date().getFullYear()} Accelerated Growth. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {["Twitter", "LinkedIn", "YouTube"].map((social) => (

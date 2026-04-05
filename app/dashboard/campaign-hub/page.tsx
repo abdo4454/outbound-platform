@@ -116,8 +116,8 @@ export default function CampaignHubPage() {
         <p className="text-sm text-gray-600">
           <span className="font-semibold">Need help?</span>{" "}
           Contact your account manager at{" "}
-          <a href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com"}`} className="text-brand-600 hover:underline">
-            {process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com"}
+          <a href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com"}`} className="text-brand-600 hover:underline">
+            {process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com"}
           </a>{" "}
           or reply to any of our emails.
         </p>

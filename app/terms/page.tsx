@@ -3,15 +3,15 @@ import { Footer } from "@/components/marketing/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Accelrated Growth",
-  description: "Accelrated Growth terms of service — the terms governing use of our outbound sales platform and services.",
+  title: "Terms of Service | Accelerated Growth",
+  description: "Accelerated Growth terms of service — the terms governing use of our outbound sales platform and services.",
   robots: { index: true, follow: true },
 };
 
 const EFFECTIVE_DATE = "March 1, 2026";
-const COMPANY = "Accelrated Growth";
+const COMPANY = "Accelerated Growth";
 const EMAIL = "abdomohamedd950@gmail.com";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
 export default function TermsPage() {
   return (

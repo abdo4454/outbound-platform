@@ -7,12 +7,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | B2B SaaS Outbound Agency & Appointment Setting Team",
   description:
-    "Meet the team behind Accelrated Growth — a specialist B2B SaaS outbound agency. Cold email, LinkedIn outreach, appointment setting, and go-to-market execution. 92% client retention, 3,200+ meetings booked.",
+    "Meet the team behind Accelerated Growth — a specialist B2B SaaS outbound agency. Cold email, LinkedIn outreach, appointment setting, and go-to-market execution. 92% client retention, 3,200+ meetings booked.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/about`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/about`,
   },
   openGraph: {
-    title: "About Accelrated Growth | B2B SaaS Outbound & Appointment Setting Agency",
+    title: "About Accelerated Growth | B2B SaaS Outbound & Appointment Setting Agency",
     description:
       "We build outbound engines for B2B SaaS companies. 50+ clients, 3,200+ meetings booked, 92% retention. Specialists in cold email, appointment setting, and go-to-market outbound.",
   },
@@ -40,7 +40,7 @@ const TEAM = [
   {
     name: "Alex Rivera",
     title: "Founder & CEO",
-    bio: "Former SDR and sales leader at two Series B SaaS companies. Built the outbound playbook that generated $8M in pipeline before starting Accelrated Growth.",
+    bio: "Former SDR and sales leader at two Series B SaaS companies. Built the outbound playbook that generated $8M in pipeline before starting Accelerated Growth.",
     initials: "AR",
   },
   {
@@ -89,7 +89,7 @@ export default function AboutPage() {
             <br />not one-off campaigns.
           </h1>
           <p className="text-xl text-gray-400 leading-relaxed">
-            Accelrated Growth is a fully-managed outbound agency for B2B SaaS companies. We handle everything — ICP research, copywriting, sending infrastructure, optimization, and reporting — so your team can focus on closing the meetings we book.
+            Accelerated Growth is a fully-managed outbound agency for B2B SaaS companies. We handle everything — ICP research, copywriting, sending infrastructure, optimization, and reporting — so your team can focus on closing the meetings we book.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function AboutPage() {
           <h2 className="font-display text-display-sm text-gray-900 mb-6">Why we exist</h2>
           <div className="space-y-5 text-gray-600 leading-relaxed text-lg">
             <p>
-              We started Accelrated Growth after watching the same thing happen at company after company: great product, promising early traction, then a pipeline that dried up once founder relationships ran out.
+              We started Accelerated Growth after watching the same thing happen at company after company: great product, promising early traction, then a pipeline that dried up once founder relationships ran out.
             </p>
             <p>
               Most agencies promise &ldquo;outbound at scale&rdquo; and deliver a CSV of contacts and a 3-step email sequence. You get meetings for a month, then silence as they move on to the next client.

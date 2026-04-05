@@ -17,16 +17,16 @@ const body = Inter({
   display: "swap",
 });
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    default: "Accelrated Growth | B2B SaaS Appointment Setting & Outbound Agency",
-    template: "%s | Accelrated Growth",
+    default: "Accelerated Growth | B2B SaaS Appointment Setting & Outbound Agency",
+    template: "%s | Accelerated Growth",
   },
   description:
-    "Accelrated Growth is the done-for-you outbound agency for B2B SaaS companies. We handle cold email, LinkedIn outreach, ICP research, and appointment setting — delivering 20–50 qualified sales meetings per month.",
+    "Accelerated Growth is the done-for-you outbound agency for B2B SaaS companies. We handle cold email, LinkedIn outreach, ICP research, and appointment setting — delivering 20–50 qualified sales meetings per month.",
   keywords: [
     "appointment setting for B2B SaaS",
     "B2B SaaS outbound agency",
@@ -49,16 +49,16 @@ export const metadata: Metadata = {
     "outbound sales agency",
     "go-to-market execution",
   ],
-  authors: [{ name: "Accelrated Growth" }],
-  creator: "Accelrated Growth",
-  publisher: "Accelrated Growth",
+  authors: [{ name: "Accelerated Growth" }],
+  creator: "Accelerated Growth",
+  publisher: "Accelerated Growth",
   alternates: { canonical: APP_URL },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: APP_URL,
-    siteName: "Accelrated Growth",
-    title: "Accelrated Growth | B2B SaaS Appointment Setting & Outbound Agency",
+    siteName: "Accelerated Growth",
+    title: "Accelerated Growth | B2B SaaS Appointment Setting & Outbound Agency",
     description:
       "Done-for-you cold email, LinkedIn outreach, and appointment setting for B2B SaaS companies. We build your outbound GTM engine and deliver 20–50 qualified meetings per month.",
     images: [
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Accelrated Growth — B2B SaaS Appointment Setting & Outbound Agency",
+        alt: "Accelerated Growth — B2B SaaS Appointment Setting & Outbound Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Accelrated Growth | B2B SaaS Appointment Setting & Outbound Agency",
+    title: "Accelerated Growth | B2B SaaS Appointment Setting & Outbound Agency",
     description:
       "Done-for-you cold email, LinkedIn outreach, and appointment setting for B2B SaaS companies. 20–50 qualified meetings per month.",
   },
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Accelrated Growth",
+  name: "Accelerated Growth",
   url: APP_URL,
   logo: `${APP_URL}/og-image.png`,
   description:

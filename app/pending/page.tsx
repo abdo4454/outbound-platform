@@ -45,7 +45,7 @@ export default async function PendingPage() {
         </div>
 
         <a
-          href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com"}`}
+          href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com"}`}
           className="btn-ghost btn-sm inline-flex items-center gap-2"
         >
           <Mail className="w-4 h-4" />

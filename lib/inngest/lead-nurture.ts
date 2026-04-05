@@ -1,7 +1,7 @@
 import { inngest } from "@/lib/inngest";
 import { sendEmail } from "@/lib/email";
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendly.com/accelerateyourgrowthtoday";
 const CAL_URL = BOOKING_URL;
 
@@ -98,7 +98,7 @@ export const nurtureNewLead = inngest.createFunction(
     await step.run("send-final", async () => {
       await sendEmail({
         to: email,
-        subject: "Closing your file — last note from Accelrated Growth",
+        subject: "Closing your file — last note from Accelerated Growth",
         html: buildFinalEmail(firstName, CAL_URL),
       });
     });
@@ -116,7 +116,7 @@ function buildConfirmationEmail(firstName: string, company: string | undefined, 
   <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; color: #1a1f35;">
     <div style="background: #0d1020; padding: 32px; border-radius: 12px 12px 0 0; text-align: center;">
       <div style="display: inline-block; background: #3366ff; border-radius: 10px; padding: 10px 16px; margin-bottom: 16px;">
-        <span style="color: white; font-weight: 700; font-size: 14px; letter-spacing: 0.5px;">Accelrated Growth</span>
+        <span style="color: white; font-weight: 700; font-size: 14px; letter-spacing: 0.5px;">Accelerated Growth</span>
       </div>
     </div>
 
@@ -187,7 +187,7 @@ function buildFollowup1Email(firstName: string, company: string | undefined, cal
       </a>
 
       <p style="color: #9ca3af; font-size: 13px; margin: 24px 0 0;">
-        — The Accelrated Growth Team
+        — The Accelerated Growth Team
       </p>
     </div>
   </div>`;
@@ -222,7 +222,7 @@ function buildFollowup2Email(firstName: string, calUrl: string) {
       </a>
 
       <p style="color: #9ca3af; font-size: 13px; margin: 24px 0 0;">
-        — The Accelrated Growth Team
+        — The Accelerated Growth Team
       </p>
     </div>
   </div>`;
@@ -254,7 +254,7 @@ function buildFinalEmail(firstName: string, calUrl: string) {
       </p>
 
       <p style="color: #9ca3af; font-size: 13px; margin: 12px 0 0;">
-        — The Accelrated Growth Team
+        — The Accelerated Growth Team
       </p>
     </div>
   </div>`;

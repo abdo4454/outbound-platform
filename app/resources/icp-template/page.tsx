@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Download our B2B SaaS ICP (Ideal Customer Profile) template. Define firmographics, technographics, buying triggers, and persona signals — the foundation for cold email that gets replies.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/resources/icp-template`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/resources/icp-template`,
   },
 };
 

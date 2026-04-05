@@ -3,15 +3,15 @@ import { Footer } from "@/components/marketing/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Accelrated Growth",
-  description: "Accelrated Growth privacy policy — how we collect, use, and protect your data.",
+  title: "Privacy Policy | Accelerated Growth",
+  description: "Accelerated Growth privacy policy — how we collect, use, and protect your data.",
   robots: { index: true, follow: true },
 };
 
 const EFFECTIVE_DATE = "March 1, 2026";
-const COMPANY = "Accelrated Growth";
+const COMPANY = "Accelerated Growth";
 const EMAIL = "abdomohamedd950@gmail.com";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
 
 export default function PrivacyPage() {
   return (

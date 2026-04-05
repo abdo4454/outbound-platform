@@ -44,7 +44,7 @@ export function PlatformPreview() {
                 <div className="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center">
                   <span className="text-white font-bold text-xs">OP</span>
                 </div>
-                <span className="font-display font-bold text-gray-900 text-sm">Accelrated Growth</span>
+                <span className="font-display font-bold text-gray-900 text-sm">Accelerated Growth</span>
                 <span className="text-gray-300 text-sm">·</span>
                 <span className="text-sm text-gray-500">Acme Corp Dashboard</span>
               </div>

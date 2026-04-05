@@ -24,7 +24,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-devtools-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for Developer Tools SaaS",
-    metaTitle: "Cold Email Agency for DevTools SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for DevTools SaaS | Accelerated Growth",
     metaDescription:
       "We book qualified meetings with CTOs, VP Engineering, and developer teams for DevTools SaaS companies. Avg 43 meetings/month. Technical buyer expertise.",
     keywords: ["cold email agency devtools saas", "appointment setting developer tools", "b2b outbound devtools"],
@@ -99,7 +99,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-fintech-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for FinTech SaaS",
-    metaTitle: "Cold Email Agency for FinTech SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for FinTech SaaS | Accelerated Growth",
     metaDescription:
       "We book meetings with CFOs, VPs of Finance, and Compliance Officers for FinTech SaaS companies. Regulated industry expertise. Avg 28 meetings/month in 6 weeks.",
     keywords: ["cold email agency fintech saas", "appointment setting fintech", "b2b outbound fintech saas"],
@@ -174,7 +174,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-hr-tech-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for HR Tech SaaS",
-    metaTitle: "Cold Email Agency for HR Tech SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for HR Tech SaaS | Accelerated Growth",
     metaDescription:
       "We book meetings with VP HR, Chief People Officers, and HR Operations leaders for HR Tech SaaS. Fixed deliverability, targeted ICP, $2.4M pipeline in one quarter.",
     keywords: ["cold email agency hr tech saas", "appointment setting hr software", "b2b outbound hr saas"],
@@ -249,7 +249,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-cybersecurity-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for Cybersecurity SaaS",
-    metaTitle: "Cold Email Agency for Cybersecurity SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for Cybersecurity SaaS | Accelerated Growth",
     metaDescription:
       "We book meetings with CISOs, VPs of Security, and IT Security leaders for Cybersecurity SaaS companies. Security-aware messaging that earns credibility with technical buyers.",
     keywords: ["cold email agency cybersecurity saas", "appointment setting security software", "b2b outbound cybersecurity"],
@@ -286,7 +286,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-martech-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for MarTech SaaS",
-    metaTitle: "Cold Email Agency for MarTech SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for MarTech SaaS | Accelerated Growth",
     metaDescription:
       "We book qualified meetings with CMOs, VPs of Marketing, and Marketing Operations leaders for MarTech SaaS. ICP precision for a crowded market.",
     keywords: ["cold email agency martech saas", "appointment setting marketing software", "outbound martech"],
@@ -323,7 +323,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "cold-email-agency-legaltech-saas",
     type: "vertical",
     h1: "Cold Email & Appointment Setting for LegalTech SaaS",
-    metaTitle: "Cold Email Agency for LegalTech SaaS | Accelrated Growth",
+    metaTitle: "Cold Email Agency for LegalTech SaaS | Accelerated Growth",
     metaDescription:
       "We book meetings with General Counsels, Legal Operations Directors, and law firm partners for LegalTech SaaS companies. Conservative buyer expertise.",
     keywords: ["cold email agency legaltech saas", "appointment setting legal software", "outbound legaltech"],
@@ -361,7 +361,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "outbound-for-series-a-saas",
     type: "stage",
     h1: "Outbound Sales & Appointment Setting for Series A SaaS",
-    metaTitle: "Outbound Sales for Series A SaaS | Accelrated Growth",
+    metaTitle: "Outbound Sales for Series A SaaS | Accelerated Growth",
     metaDescription:
       "You just raised your Series A. Now you need to build pipeline fast. We build the outbound engine for Series A SaaS — from ICP research to 30–50 qualified meetings/month in 8 weeks.",
     keywords: ["outbound sales series a saas", "appointment setting series a", "build pipeline series a saas", "sdr agency series a"],
@@ -398,7 +398,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "outbound-for-seed-stage-saas",
     type: "stage",
     h1: "Outbound Sales & Appointment Setting for Seed-Stage SaaS",
-    metaTitle: "Outbound Sales for Seed-Stage SaaS | Accelrated Growth",
+    metaTitle: "Outbound Sales for Seed-Stage SaaS | Accelerated Growth",
     metaDescription:
       "Validate your ICP and build pipeline before you need to hire. We run outbound for seed-stage SaaS founders — from 0 to 15–25 qualified meetings/month while you focus on product.",
     keywords: ["outbound sales seed stage saas", "appointment setting seed startup", "founder led sales outbound", "early stage saas pipeline"],
@@ -435,7 +435,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "outbound-for-series-b-saas",
     type: "stage",
     h1: "Enterprise Outbound & Appointment Setting for Series B SaaS",
-    metaTitle: "Enterprise Outbound for Series B SaaS | Accelrated Growth",
+    metaTitle: "Enterprise Outbound for Series B SaaS | Accelerated Growth",
     metaDescription:
       "Series B SaaS needs enterprise pipeline, not SMB. We run multi-stakeholder outbound that reaches VP and C-suite decision-makers at enterprise accounts — 30–50 meetings/month.",
     keywords: ["outbound sales series b saas", "enterprise appointment setting saas", "series b pipeline building", "enterprise cold email saas"],
@@ -472,7 +472,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "outbound-for-bootstrapped-saas",
     type: "stage",
     h1: "Outbound Sales & Appointment Setting for Bootstrapped SaaS",
-    metaTitle: "Outbound Sales for Bootstrapped SaaS | Accelrated Growth",
+    metaTitle: "Outbound Sales for Bootstrapped SaaS | Accelerated Growth",
     metaDescription:
       "Bootstrapped SaaS needs efficient, high-ROI pipeline. We run cold email and appointment setting at $143 cost-per-meeting — 3x more efficient than hiring an SDR.",
     keywords: ["outbound sales bootstrapped saas", "cold email bootstrapped startup", "low cost appointment setting saas", "self funded saas pipeline"],
@@ -510,7 +510,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "appointment-setting-for-vp-sales",
     type: "title",
     h1: "Appointment Setting for VP of Sales: Fill Your Team's Calendar",
-    metaTitle: "Appointment Setting for VP Sales | Accelrated Growth",
+    metaTitle: "Appointment Setting for VP Sales | Accelerated Growth",
     metaDescription:
       "Built for VP Sales who need to hit pipeline targets without managing SDR headcount. We generate 30–50 qualified meetings/month for your AE team — fully managed.",
     keywords: ["appointment setting for vp sales", "outbound pipeline for sales teams", "sdr agency for vp sales", "managed pipeline generation"],
@@ -547,7 +547,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "appointment-setting-for-founders",
     type: "title",
     h1: "Appointment Setting for Founders: Stop Doing Outbound Yourself",
-    metaTitle: "Appointment Setting for Founders | Accelrated Growth",
+    metaTitle: "Appointment Setting for Founders | Accelerated Growth",
     metaDescription:
       "Founders doing their own cold email get 3–8 meetings/month. We generate 20–40 qualified meetings/month while you focus on product, team, and customers.",
     keywords: ["appointment setting for founders", "founder led sales outbound", "cold email for startup founders", "outsource cold email founder"],
@@ -584,7 +584,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "appointment-setting-for-head-of-growth",
     type: "title",
     h1: "B2B Outbound for Head of Growth: Add Outbound to Your GTM Mix",
-    metaTitle: "B2B Outbound for Head of Growth | Accelrated Growth",
+    metaTitle: "B2B Outbound for Head of Growth | Accelerated Growth",
     metaDescription:
       "Head of Growth adding outbound to a PLG or inbound motion? We integrate outbound as a channel — with attribution, A/B testing, and pipeline analytics built in.",
     keywords: ["outbound for head of growth", "add outbound channel saas growth", "outbound gtm saas", "growth team outbound pipeline"],
@@ -622,7 +622,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "b2b-cold-email-agency-pricing",
     type: "intent",
     h1: "B2B Cold Email Agency Pricing: What Does Appointment Setting Actually Cost?",
-    metaTitle: "Cold Email Agency Pricing | Accelrated Growth",
+    metaTitle: "Cold Email Agency Pricing | Accelerated Growth",
     metaDescription:
       "Transparent pricing for B2B cold email and appointment setting. Starter $2,500/mo, Growth $5,000/mo, Scale $10,000/mo. Compare to in-house SDR cost.",
     keywords: ["cold email agency pricing", "appointment setting agency cost", "outsourced sdr pricing", "b2b outbound agency rates"],
@@ -659,7 +659,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "outsourced-sdr-saas",
     type: "intent",
     h1: "Outsourced SDR for B2B SaaS: How It Works, What It Costs, What to Expect",
-    metaTitle: "Outsourced SDR for B2B SaaS | Accelrated Growth",
+    metaTitle: "Outsourced SDR for B2B SaaS | Accelerated Growth",
     metaDescription:
       "Everything you need to know about outsourced SDR for B2B SaaS: how it works, cost comparison vs. in-house, what to expect in the first 90 days, and how to choose a provider.",
     keywords: ["outsourced sdr saas", "sdr outsourcing b2b", "outsource sales development rep", "managed sdr service saas"],
@@ -696,7 +696,7 @@ export const LANDING_PAGES: LandingPage[] = [
     slug: "sdr-as-a-service",
     type: "intent",
     h1: "SDR as a Service for B2B SaaS: Everything Your In-House Team Does, Done for You",
-    metaTitle: "SDR as a Service for B2B SaaS | Accelrated Growth",
+    metaTitle: "SDR as a Service for B2B SaaS | Accelerated Growth",
     metaDescription:
       "SDR as a Service: the complete outbound function — ICP research, list building, cold email, LinkedIn, reply handling, and meeting booking. No hiring. No ramp. Meetings in week 2.",
     keywords: ["sdr as a service", "sdr as a service saas", "managed sdr saas", "full outsourced sdr function"],

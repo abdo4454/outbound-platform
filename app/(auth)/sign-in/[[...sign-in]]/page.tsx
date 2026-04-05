@@ -11,7 +11,7 @@ export default function SignInPage() {
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
         <h1 className="font-display text-2xl font-bold text-gray-900">Welcome back</h1>
-        <p className="text-gray-500 mt-2">Sign in to your Accelrated Growth dashboard</p>
+        <p className="text-gray-500 mt-2">Sign in to your Accelerated Growth dashboard</p>
       </div>
       <SignInForm />
     </div>

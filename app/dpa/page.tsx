@@ -3,13 +3,13 @@ import { Footer } from "@/components/marketing/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Data Processing Agreement (DPA) | Accelrated Growth",
-  description: "Accelrated Growth Data Processing Agreement — GDPR-compliant DPA covering processing of personal data in connection with our outbound services.",
+  title: "Data Processing Agreement (DPA) | Accelerated Growth",
+  description: "Accelerated Growth Data Processing Agreement — GDPR-compliant DPA covering processing of personal data in connection with our outbound services.",
   robots: { index: true, follow: true },
 };
 
 const EFFECTIVE_DATE = "March 1, 2026";
-const COMPANY = "Accelrated Growth";
+const COMPANY = "Accelerated Growth";
 const EMAIL = "abdomohamedd950@gmail.com";
 
 export default function DPAPage() {

@@ -5,11 +5,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers | Join Accelrated Growth — B2B Outbound Agency",
+  title: "Careers | Join Accelerated Growth — B2B Outbound Agency",
   description:
-    "Join the team at Accelrated Growth. We're hiring outbound strategists, copywriters, and account managers who are obsessed with B2B SaaS pipeline generation.",
+    "Join the team at Accelerated Growth. We're hiring outbound strategists, copywriters, and account managers who are obsessed with B2B SaaS pipeline generation.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/careers`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/careers`,
   },
 };
 

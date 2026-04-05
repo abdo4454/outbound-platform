@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/lib/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com";
+  const base = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [

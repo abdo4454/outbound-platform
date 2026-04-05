@@ -5,15 +5,15 @@ import { Mail, MessageSquare, Briefcase } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Accelrated Growth",
+  title: "Contact Us | Accelerated Growth",
   description:
-    "Get in touch with Accelrated Growth. Book a strategy call, ask about our B2B outbound services, or inquire about careers.",
+    "Get in touch with Accelerated Growth. Book a strategy call, ask about our B2B outbound services, or inquire about careers.",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://accelratedgrowth.com"}/contact`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/contact`,
   },
 };
 
-const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@accelratedgrowth.com";
+const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@acceleratedgrowth.com";
 
 const CONTACT_OPTIONS = [
   {
