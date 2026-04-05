@@ -4,30 +4,30 @@ const STEPS = [
   {
     icon: Target,
     step: "01",
-    title: "Define Your ICP",
+    title: "Map Your SaaS ICP",
     description:
-      "We work with you to nail down exactly who your ideal customer is — industry, company size, titles, geography, and buying signals.",
+      "We work with you to define your ideal SaaS buyer — company stage, tech stack, headcount, buyer titles, and the specific pain your product solves. Precision targeting is everything.",
   },
   {
     icon: Mail,
     step: "02",
     title: "We Build & Launch",
     description:
-      "Our team sets up domains, warms inboxes, writes personalized sequences, and builds targeted prospect lists. You approve, we launch.",
+      "Our team sets up warmed sending domains, builds your prospect list from Apollo and LinkedIn, writes short personalized sequences, and launches within one week. You approve everything first.",
   },
   {
     icon: CalendarCheck,
     step: "03",
     title: "Meetings Hit Your Calendar",
     description:
-      "Qualified prospects book directly onto your calendar. We handle all the back-and-forth — you just show up prepared.",
+      "We handle every reply — objections, follow-ups, scheduling. Qualified prospects book directly onto your calendar. You show up to close, not to admin.",
   },
   {
     icon: TrendingUp,
     step: "04",
-    title: "Optimize & Scale",
+    title: "Optimize to a Machine",
     description:
-      "We continuously A/B test messaging, refine targeting, and scale what works. Your pipeline grows month over month.",
+      "Every week we A/B test messaging, review conversion data, and tighten targeting. Month over month, your meeting volume grows and your cost per meeting drops.",
   },
 ];
 
@@ -40,19 +40,18 @@ export function HowItWorks() {
             How It Works
           </p>
           <h2 className="font-display text-display-sm sm:text-display-md text-gray-900 mb-4">
-            From zero to booked meetings
+            From zero to 20+ SaaS meetings
             <br className="hidden sm:block" /> in four steps
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            We handle the entire outbound engine so you can focus on closing. 
-            Here&apos;s what the process looks like.
+            We run the entire outbound machine. You focus on closing. Here&apos;s
+            exactly what the process looks like.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {STEPS.map((step, i) => (
             <div key={step.step} className="relative group">
-              {/* Connector line */}
               {i < STEPS.length - 1 && (
                 <div className="hidden lg:block absolute top-12 left-[calc(50%+32px)] w-[calc(100%-64px)] h-px border-t-2 border-dashed border-gray-200" />
               )}

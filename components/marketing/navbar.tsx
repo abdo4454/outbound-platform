@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/ui/logo";
 
 const NAV_LINKS = [
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Services", href: "#services" },
-  { label: "Results", href: "#results" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Free Audit", href: "/audit" },
+  { label: "About", href: "/about" },
 ];
 
 export function Navbar() {
@@ -34,18 +35,8 @@ export function Navbar() {
     >
       <div className="section flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">OP</span>
-          </div>
-          <span
-            className={cn(
-              "font-display font-bold text-xl transition-colors",
-              scrolled ? "text-gray-900" : "text-white"
-            )}
-          >
-            OutboundPro
-          </span>
+        <Link href="/">
+          <Logo dark={scrolled} />
         </Link>
 
         {/* Desktop Nav */}
@@ -77,7 +68,7 @@ export function Navbar() {
           >
             Client Login
           </Link>
-          <Link href="#pricing" className="btn-primary btn-sm">
+          <Link href="/book" className="btn-primary btn-sm">
             Book a Call <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -112,7 +103,7 @@ export function Navbar() {
               <Link href="/sign-in" className="btn-ghost btn-sm justify-start">
                 Client Login
               </Link>
-              <Link href="#pricing" className="btn-primary btn-sm">
+              <Link href="/book" className="btn-primary btn-sm">
                 Book a Call <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

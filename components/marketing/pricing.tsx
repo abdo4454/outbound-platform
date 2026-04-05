@@ -1,5 +1,4 @@
 import { Check, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const PLANS = [
@@ -7,53 +6,59 @@ const PLANS = [
     name: "Starter",
     price: "$2,500",
     period: "/month",
-    description: "Perfect for companies testing outbound for the first time.",
+    description: "For SaaS companies running outbound for the first time. One ICP, one campaign, proven results.",
     features: [
-      "1 sending domain",
-      "Up to 5,000 emails/month",
-      "1 campaign sequence",
-      "Basic reporting dashboard",
-      "Weekly performance email",
-      "Email support",
+      "1 sending domain + inbox warm-up",
+      "Up to 5,000 targeted emails/month",
+      "1 campaign with 3-step sequence",
+      "ICP research & list building",
+      "Weekly performance report",
+      "Slack + email notifications on meetings",
+      "HubSpot / Pipedrive sync",
     ],
     cta: "Book a Call",
+    href: "#book",
     featured: false,
   },
   {
     name: "Growth",
     price: "$5,000",
     period: "/month",
-    description: "For teams ready to scale outbound as a core growth channel.",
+    description: "For SaaS companies scaling outbound as a core pipeline channel. Multiple ICPs, campaigns, and A/B testing.",
     features: [
-      "3 sending domains",
+      "3 sending domains + warm-up",
       "Up to 25,000 emails/month",
-      "Unlimited sequences",
-      "Advanced analytics & A/B testing",
-      "LinkedIn outreach add-on",
-      "Slack integration",
-      "Weekly reports + live dashboard",
+      "Unlimited campaigns & sequences",
+      "A/B testing on subject lines & copy",
+      "LinkedIn outreach add-on available",
+      "Live reporting dashboard",
+      "CRM sync + full attribution",
       "Dedicated account manager",
+      "Bi-weekly strategy calls",
     ],
     cta: "Book a Call",
+    href: "#book",
     featured: true,
   },
   {
     name: "Scale",
     price: "$10,000",
     period: "/month",
-    description: "Full-stack outbound engine for high-growth companies.",
+    description: "Full-stack outbound engine for high-growth SaaS targeting enterprise. Multi-channel, custom research, zero cap.",
     features: [
       "Unlimited sending domains",
       "Unlimited email volume",
       "Multi-channel (email + LinkedIn)",
-      "Custom lead research",
-      "Real-time dashboard",
-      "CRM integration & sync",
+      "Custom enterprise lead research",
+      "Live dashboard (syncs every 15 min)",
+      "Salesforce / HubSpot deep sync",
       "Custom integrations",
-      "Priority support",
+      "Weekly executive reporting",
       "Quarterly business reviews",
+      "Priority 2-hour response SLA",
     ],
     cta: "Book a Call",
+    href: "#book",
     featured: false,
   },
 ];
@@ -71,7 +76,7 @@ export function Pricing() {
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             No setup fees. No long-term contracts. Cancel anytime.
-            Every plan includes a 30-day performance guarantee.
+            Every plan includes a qualified meetings guarantee.
           </p>
         </div>
 
@@ -152,8 +157,8 @@ export function Pricing() {
                 ))}
               </div>
 
-              <Link
-                href="#"
+              <a
+                href={plan.href}
                 className={cn(
                   "w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold transition-all",
                   plan.featured
@@ -162,14 +167,14 @@ export function Pricing() {
                 )}
               >
                 {plan.cta} <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           ))}
         </div>
 
         <p className="text-center text-sm text-gray-400 mt-8">
-          Need a custom plan? Have more than 3 sales reps?{" "}
-          <a href="#" className="text-brand-600 font-medium hover:underline">
+          Need a custom plan for a larger team?{" "}
+          <a href="#book" className="text-brand-600 font-medium hover:underline">
             Let&apos;s talk
           </a>
           .

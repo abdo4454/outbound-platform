@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
           data: {
             orgId: org.id,
             action: "subscription.canceled",
-            details: { reason: subscription.cancellation_details?.reason },
+            details: JSON.stringify({ reason: subscription.cancellation_details?.reason }),
           },
         });
         break;

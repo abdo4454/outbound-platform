@@ -1,5 +1,5 @@
 // ============================================================
-// Outbound Marketing Agency — Database Schema
+// Outbound Marketing Agency — Database Schema (SQLite)
 // ============================================================
 
 generator client {
@@ -7,66 +7,98 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 // ============================================================
-// MULTI-TENANCY & AUTH
+// USERS & AUTH
 // ============================================================
 
-model Organization {
-  id        String   @id @default(cuid())
-  clerkOrgId String  @unique
-  name      String
-  slug      String   @unique
-  logo      String?
-  website   String?
-  industry  String?
-  plan      Plan     @default(STARTER)
-  status    OrgStatus @default(ONBOARDING)
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String
+  avatar        String?
+  emailVerified Boolean   @default(false)
 
-  // Stripe billing
-  stripeCustomerId     String?  @unique
-  stripeSubscriptionId String?  @unique
-  stripePriceId        String?
-  billingEmail         String?
-  mrr                  Int      @default(0) // in cents
-
-  // Settings
-  brandColors Json?    // { primary: "#xxx", secondary: "#xxx" }
-  timezone    String   @default("America/New_York")
+  resetToken    String?   @unique
+  resetTokenExp DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // Relations
-  members       Member[]
-  campaigns     Campaign[]
-  contacts      Contact[]
-  leads         Lead[]
-  deals         Deal[]
-  reports       Report[]
-  onboarding    Onboarding?
-  invoices      Invoice[]
-  activityLogs  ActivityLog[]
-  integrations  Integration[]
+  members Member[]
+
+  @@index([email])
+}
+
+// ============================================================
+// MULTI-TENANCY
+// ============================================================
+
+model Organization {
+  id         String  @id @default(cuid())
+  clerkOrgId String? @unique
+  name       String
+  slug       String  @unique
+  inviteCode String  @unique @default(cuid())
+  logo       String?
+  website    String?
+  industry   String?
+
+  // plan: STARTER | GROWTH | SCALE | ENTERPRISE
+  plan   String @default("STARTER")
+  // status: ONBOARDING | ACTIVE | PAUSED | CHURNED
+  status String @default("ONBOARDING")
+
+  // Credits for unlocking contacts in the global data catalog
+  creditBalance Int @default(0)
+
+  stripeCustomerId     String? @unique
+  stripeSubscriptionId String? @unique
+  stripePriceId        String?
+  billingEmail         String?
+  mrr                  Int     @default(0)
+
+  // Stored as JSON string
+  brandColors String?
+  timezone    String @default("America/New_York")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members      Member[]
+  campaigns    Campaign[]
+  contacts     Contact[]
+  leads        Lead[]
+  deals        Deal[]
+  reports      Report[]
+  onboarding   Onboarding?
+  invoices     Invoice[]
+  activityLogs ActivityLog[]
+  integrations Integration[]
+  invites      UserInvite[]
 
   @@index([clerkOrgId])
+  @@index([slug])
   @@index([stripeCustomerId])
 }
 
 model Member {
-  id        String   @id @default(cuid())
-  clerkUserId String @unique
-  email     String
-  name      String
-  avatar    String?
-  role      Role     @default(VIEWER)
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  email  String
+  name   String
+  avatar String?
+  // role: ADMIN | CLIENT_ADMIN | MANAGER | VIEWER
+  role   String @default("VIEWER")
+
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -74,29 +106,29 @@ model Member {
   assignedDeals Deal[]
   activityLogs  ActivityLog[]
 
+  @@unique([userId, orgId])
   @@index([orgId])
-  @@index([clerkUserId])
+  @@index([userId])
 }
 
-enum Plan {
-  STARTER
-  GROWTH
-  SCALE
-  ENTERPRISE
-}
+model UserInvite {
+  id    String @id @default(cuid())
+  email String
+  token String @unique @default(cuid())
+  // role: ADMIN | CLIENT_ADMIN | MANAGER | VIEWER
+  role  String @default("VIEWER")
 
-enum OrgStatus {
-  ONBOARDING
-  ACTIVE
-  PAUSED
-  CHURNED
-}
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
-enum Role {
-  ADMIN       // Your internal team - full access
-  CLIENT_ADMIN // Client admin - their org's data + billing
-  MANAGER     // Client manager - their org's data
-  VIEWER      // Client viewer - read-only dashboards
+  expiresAt  DateTime
+  acceptedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([email])
+  @@index([orgId])
 }
 
 // ============================================================
@@ -104,58 +136,54 @@ enum Role {
 // ============================================================
 
 model Lead {
-  id        String   @id @default(cuid())
-  email     String
-  name      String?
-  company   String?
-  phone     String?
-  website   String?
-  message   String?
+  id      String  @id @default(cuid())
+  email   String
+  name    String?
+  company String?
+  phone   String?
+  website String?
+  message String?
 
-  // Attribution
-  source         String?  // utm_source
-  medium         String?  // utm_medium
-  campaign       String?  // utm_campaign
-  content        String?  // utm_content
-  term           String?  // utm_term
-  landingPage    String?
-  referrer       String?
-  gclid          String?
-  fbclid         String?
+  source      String?
+  medium      String?
+  campaign    String?
+  content     String?
+  term        String?
+  landingPage String?
+  referrer    String?
+  gclid       String?
+  fbclid      String?
 
-  // First-touch vs last-touch
-  firstTouchSource  String?
-  firstTouchMedium  String?
-  lastTouchSource   String?
-  lastTouchMedium   String?
+  firstTouchSource String?
+  firstTouchMedium String?
+  lastTouchSource  String?
+  lastTouchMedium  String?
 
-  // Qualification
-  companySize    String?
-  budget         String?
-  interest       String?  // which service
-  icpScore       Int?     // 0-100
+  companySize String?
+  budget      String?
+  interest    String?
+  icpScore    Int?
 
-  // Engagement
-  pagesViewed    Int      @default(0)
-  timeOnSite     Int      @default(0) // seconds
-  chatEngaged    Boolean  @default(false)
-  contentDownloaded String[] // lead magnet IDs
+  pagesViewed       Int     @default(0)
+  timeOnSite        Int     @default(0)
+  chatEngaged       Boolean @default(false)
+  // Stored as JSON array string
+  contentDownloaded String  @default("[]")
 
-  // Status
-  status    LeadStatus @default(NEW)
+  // status: NEW | CONTACTED | QUALIFIED | DISCOVERY_BOOKED | DISCOVERY_COMPLETE | PROPOSAL_SENT | NEGOTIATION | WON | LOST | DISQUALIFIED
+  status      String    @default("NEW")
   convertedAt DateTime?
 
-  // Enrichment data
-  enrichmentData Json?  // Clearbit/Apollo response
+  // Stored as JSON string
+  enrichmentData String?
   linkedinUrl    String?
   industry       String?
   jobTitle       String?
 
-  // Relations
-  orgId     String?
-  org       Organization? @relation(fields: [orgId], references: [id])
-  dealId    String?
-  deal      Deal?    @relation(fields: [dealId], references: [id])
+  orgId  String?
+  org    Organization? @relation(fields: [orgId], references: [id])
+  dealId String?
+  deal   Deal?         @relation(fields: [dealId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -166,49 +194,33 @@ model Lead {
   @@index([createdAt])
 }
 
-enum LeadStatus {
-  NEW
-  CONTACTED
-  QUALIFIED
-  DISCOVERY_BOOKED
-  DISCOVERY_COMPLETE
-  PROPOSAL_SENT
-  NEGOTIATION
-  WON
-  LOST
-  DISQUALIFIED
-}
-
 // ============================================================
 // PIPELINE & DEALS
 // ============================================================
 
 model Deal {
-  id        String   @id @default(cuid())
-  title     String
-  value     Int      @default(0) // monthly retainer in cents
-  currency  String   @default("usd")
+  id       String @id @default(cuid())
+  title    String
+  value    Int    @default(0)
+  currency String @default("usd")
+  // stage: DISCOVERY_BOOKED | DISCOVERY_COMPLETE | PROPOSAL_SENT | NEGOTIATION | CLOSED_WON | CLOSED_LOST
+  stage    String @default("DISCOVERY_BOOKED")
 
-  stage     DealStage @default(DISCOVERY_BOOKED)
-  probability Int     @default(20) // percentage
+  probability    Int     @default(20)
+  contractLength Int?
+  setupFee       Int?
+  startDate      DateTime?
+  closeDate      DateTime?
+  lostReason     String?
+  // Stored as JSON array string
+  services       String  @default("[]")
 
-  // Contract details
-  contractLength  Int?     // months
-  setupFee        Int?     // one-time in cents
-  startDate       DateTime?
-  closeDate       DateTime?
-  lostReason      String?
-
-  // Services selected
-  services  String[]  // ["cold_email", "linkedin", "lead_research"]
-
-  // Relations
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId        String
+  org          Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
   assignedToId String?
-  assignedTo   Member?  @relation(fields: [assignedToId], references: [id])
-  leads     Lead[]
-  notes     DealNote[]
+  assignedTo   Member?      @relation(fields: [assignedToId], references: [id])
+  leads        Lead[]
+  notes        DealNote[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -219,82 +231,66 @@ model Deal {
 }
 
 model DealNote {
-  id        String   @id @default(cuid())
-  content   String
-  dealId    String
-  deal      Deal     @relation(fields: [dealId], references: [id], onDelete: Cascade)
-  authorId  String
+  id       String @id @default(cuid())
+  content  String
+  dealId   String
+  deal     Deal   @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  authorId String
+
   createdAt DateTime @default(now())
 
   @@index([dealId])
 }
 
-enum DealStage {
-  DISCOVERY_BOOKED
-  DISCOVERY_COMPLETE
-  PROPOSAL_SENT
-  NEGOTIATION
-  CLOSED_WON
-  CLOSED_LOST
-}
-
 // ============================================================
-// CAMPAIGNS & METRICS (Client Portal Data)
+// CAMPAIGNS & METRICS
 // ============================================================
 
 model Campaign {
-  id        String   @id @default(cuid())
-  name      String
-  status    CampaignStatus @default(DRAFT)
-  type      CampaignType   @default(COLD_EMAIL)
+  id String @id @default(cuid())
+  name String
+  // status: DRAFT | ACTIVE | PAUSED | COMPLETED | ARCHIVED
+  status String @default("DRAFT")
+  // type: COLD_EMAIL | LINKEDIN | MULTI_CHANNEL
+  type   String @default("COLD_EMAIL")
 
-  // External tool reference
-  externalId    String?  // ID in Instantly/Smartlead/etc
-  externalTool  String?  // "instantly", "smartlead", "lemlist"
+  externalId   String?
+  externalTool String?
 
-  // Config
-  sendingEmail  String?
-  sendingDomain String?
-  dailyLimit    Int?
+  sendingEmail   String?
+  sendingDomain  String?
+  dailyLimit     Int?
   targetAudience String?
 
-  // Relations
   orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  org       Organization     @relation(fields: [orgId], references: [id], onDelete: Cascade)
   metrics   CampaignMetric[]
   sequences Sequence[]
 
   startedAt DateTime?
   pausedAt  DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
   @@index([orgId])
   @@index([status])
 }
 
 model CampaignMetric {
-  id        String   @id @default(cuid())
-  date      DateTime @db.Date
+  id   String   @id @default(cuid())
+  date DateTime
 
-  // Volume
   emailsSent      Int @default(0)
   emailsDelivered Int @default(0)
   bounces         Int @default(0)
-
-  // Engagement
   opens           Int @default(0)
   uniqueOpens     Int @default(0)
   clicks          Int @default(0)
   replies         Int @default(0)
   positiveReplies Int @default(0)
-
-  // Outcomes
   meetingsBooked  Int @default(0)
   meetingsHeld    Int @default(0)
   noShows         Int @default(0)
-
-  // Deliverability
   spamComplaints  Int @default(0)
   unsubscribes    Int @default(0)
 
@@ -309,10 +305,11 @@ model CampaignMetric {
 }
 
 model Sequence {
-  id        String   @id @default(cuid())
-  name      String
-  steps     Json     // Array of { stepNumber, type, subject, body, delay }
-  status    String   @default("draft")
+  id     String @id @default(cuid())
+  name   String
+  // Stored as JSON string
+  steps  String @default("[]")
+  status String @default("draft")
 
   campaignId String
   campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
@@ -323,46 +320,40 @@ model Sequence {
   @@index([campaignId])
 }
 
-enum CampaignStatus {
-  DRAFT
-  ACTIVE
-  PAUSED
-  COMPLETED
-  ARCHIVED
-}
-
-enum CampaignType {
-  COLD_EMAIL
-  LINKEDIN
-  MULTI_CHANNEL
-}
-
 // ============================================================
-// CONTACTS (Prospect Database per Client)
+// CONTACTS
 // ============================================================
 
 model Contact {
-  id        String   @id @default(cuid())
-  email     String
-  firstName String?
-  lastName  String?
-  phone     String?
-  jobTitle  String?
-  company   String?
+  id            String  @id @default(cuid())
+  email         String
+  firstName     String?
+  lastName      String?
+  phone         String?
+  jobTitle      String?
+  company       String?
   companyDomain String?
   linkedinUrl   String?
-  location  String?
+  location      String?
+  state         String?
+  industry      String?
 
-  // Enrichment
   enrichedAt     DateTime?
-  enrichmentData Json?
+  // Stored as JSON string
+  enrichmentData String?
 
-  // Status
-  status    ContactStatus @default(ACTIVE)
-  tags      String[]
+  // status: ACTIVE | BOUNCED | UNSUBSCRIBED | REPLIED | MEETING_BOOKED | DO_NOT_CONTACT
+  status String  @default("ACTIVE")
+  // Stored as JSON array string
+  tags   String  @default("[]")
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  // Global catalog flag — these contacts are visible to all orgs (with credit gating)
+  isGlobal Boolean @default(false)
+
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  unlocks ContactUnlock[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -370,15 +361,18 @@ model Contact {
   @@index([orgId])
   @@index([email])
   @@index([status])
+  @@index([isGlobal])
 }
 
-enum ContactStatus {
-  ACTIVE
-  BOUNCED
-  UNSUBSCRIBED
-  REPLIED
-  MEETING_BOOKED
-  DO_NOT_CONTACT
+model ContactUnlock {
+  id         String   @id @default(cuid())
+  orgId      String
+  contactId  String
+  contact    Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  unlockedAt DateTime @default(now())
+
+  @@unique([orgId, contactId])
+  @@index([orgId])
 }
 
 // ============================================================
@@ -386,9 +380,8 @@ enum ContactStatus {
 // ============================================================
 
 model Onboarding {
-  id        String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  // Step completion
   icpComplete       Boolean @default(false)
   messagingComplete Boolean @default(false)
   domainComplete    Boolean @default(false)
@@ -397,43 +390,39 @@ model Onboarding {
   calendarComplete  Boolean @default(false)
   approvalComplete  Boolean @default(false)
 
-  // ICP Data
-  targetIndustries  String[]
-  targetCompanySizes String[]
-  targetGeographies String[]
-  targetTitles      String[]
-  exclusions        String[]
+  // All stored as JSON array strings
+  targetIndustries   String @default("[]")
+  targetCompanySizes String @default("[]")
+  targetGeographies  String @default("[]")
+  targetTitles       String @default("[]")
+  exclusions         String @default("[]")
 
-  // Messaging
-  valueProps        String[]
-  tonePreference    String?
-  painPoints        String[]
-  differentiators   String[]
-  avoidPhrases      String[]
+  valueProps      String @default("[]")
+  tonePreference  String?
+  painPoints      String @default("[]")
+  differentiators String @default("[]")
+  avoidPhrases    String @default("[]")
 
-  // Domain & Email
-  sendingDomains    String[]
-  emailAccounts     Json?     // Array of { email, provider, status }
+  sendingDomains String @default("[]")
+  // Stored as JSON string
+  emailAccounts  String?
 
-  // Assets
-  assets            Json?     // Array of { name, url, type }
+  // Stored as JSON string
+  assets String?
 
-  // CRM
-  crmType           String?   // "hubspot", "salesforce", "pipedrive"
-  crmConnected      Boolean   @default(false)
+  crmType      String?
+  crmConnected Boolean @default(false)
 
-  // Calendar
-  calendarProvider  String?   // "google", "microsoft"
-  calendarConnected Boolean   @default(false)
+  calendarProvider  String?
+  calendarConnected Boolean @default(false)
   bookingLink       String?
 
-  // Approval
-  launchDate        DateTime?
-  approvedBy        String?
-  approvedAt        DateTime?
+  launchDate DateTime?
+  approvedBy String?
+  approvedAt DateTime?
 
-  orgId     String   @unique
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId String       @unique
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -444,17 +433,18 @@ model Onboarding {
 // ============================================================
 
 model Invoice {
-  id        String   @id @default(cuid())
-  stripeInvoiceId String @unique
-  amount    Int      // in cents
-  currency  String   @default("usd")
-  status    InvoiceStatus
-  paidAt    DateTime?
-  dueDate   DateTime?
-  pdfUrl    String?
+  id              String  @id @default(cuid())
+  stripeInvoiceId String  @unique
+  amount          Int
+  currency        String  @default("usd")
+  // status: DRAFT | OPEN | PAID | VOID | UNCOLLECTIBLE
+  status          String
+  paidAt          DateTime?
+  dueDate         DateTime?
+  pdfUrl          String?
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
 
@@ -462,29 +452,23 @@ model Invoice {
   @@index([status])
 }
 
-enum InvoiceStatus {
-  DRAFT
-  OPEN
-  PAID
-  VOID
-  UNCOLLECTIBLE
-}
-
 // ============================================================
 // REPORTS
 // ============================================================
 
 model Report {
-  id        String   @id @default(cuid())
-  type      ReportType
-  period    String   // "2024-W12", "2024-03", "2024-Q1"
-  title     String
-  data      Json     // Aggregated metrics
-  pdfUrl    String?
-  sentAt    DateTime?
+  id     String @id @default(cuid())
+  // type: WEEKLY | MONTHLY | QUARTERLY
+  type   String
+  period String
+  title  String
+  // Stored as JSON string
+  data   String @default("{}")
+  pdfUrl String?
+  sentAt DateTime?
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
 
@@ -492,29 +476,28 @@ model Report {
   @@index([type, period])
 }
 
-enum ReportType {
-  WEEKLY
-  MONTHLY
-  QUARTERLY
-}
-
 // ============================================================
 // INTEGRATIONS
 // ============================================================
 
 model Integration {
-  id        String   @id @default(cuid())
-  type      String   // "hubspot", "google_calendar", "slack", "instantly"
-  status    String   @default("connected")
+  id     String @id @default(cuid())
+  type   String
+  status String @default("connected")
 
-  // OAuth tokens (encrypted in production)
   accessToken  String?
   refreshToken String?
   expiresAt    DateTime?
-  metadata     Json?   // tool-specific config
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  lastSyncAt     DateTime?
+  lastSyncStatus String?
+  lastSyncError  String?
+
+  // Stored as JSON string
+  metadata String?
+
+  orgId String
+  org   Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -528,15 +511,16 @@ model Integration {
 // ============================================================
 
 model ActivityLog {
-  id        String   @id @default(cuid())
-  action    String   // "campaign.launched", "lead.created", "deal.stage_changed"
-  details   Json?
+  id        String  @id @default(cuid())
+  action    String
+  // Stored as JSON string
+  details   String?
   ipAddress String?
 
-  orgId     String
-  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
-  memberId  String?
-  member    Member?  @relation(fields: [memberId], references: [id])
+  orgId    String
+  org      Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  memberId String?
+  member   Member?      @relation(fields: [memberId], references: [id])
 
   createdAt DateTime @default(now())
 
@@ -550,23 +534,21 @@ model ActivityLog {
 // ============================================================
 
 model Referral {
-  id        String   @id @default(cuid())
-  code      String   @unique
+  id            String  @id @default(cuid())
+  code          String  @unique
   referrerEmail String
   referrerName  String?
 
-  // Commission
-  commissionType  String  @default("flat") // "flat", "percentage", "recurring"
-  commissionValue Int     @default(0)      // cents or basis points
+  commissionType  String @default("flat")
+  commissionValue Int    @default(0)
 
-  // Tracking
-  clicks          Int     @default(0)
-  signups         Int     @default(0)
-  conversions     Int     @default(0)
-  totalEarned     Int     @default(0) // cents
-  totalPaid       Int     @default(0) // cents
+  clicks      Int @default(0)
+  signups     Int @default(0)
+  conversions Int @default(0)
+  totalEarned Int @default(0)
+  totalPaid   Int @default(0)
 
-  status    String   @default("active")
+  status String @default("active")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

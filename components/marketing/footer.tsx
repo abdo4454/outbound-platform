@@ -1,22 +1,24 @@
 import Link from "next/link";
 
 const LINKS = {
-  Product: [
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
+  Services: [
+    { label: "How It Works", href: "/#how-it-works" },
+    { label: "Appointment Setting", href: "/#services" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Free Outbound Audit", href: "/audit" },
     { label: "Case Studies", href: "/case-studies" },
+    { label: "Book a Strategy Call", href: "/book" },
   ],
   Company: [
-    { label: "About", href: "/about" },
+    { label: "About Us", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],
   Resources: [
     { label: "Cold Email Playbook", href: "/resources/playbook" },
-    { label: "ROI Calculator", href: "/calculator" },
     { label: "ICP Template", href: "/resources/icp-template" },
+    { label: "FAQ", href: "/#faq" },
     { label: "Client Login", href: "/sign-in" },
   ],
   Legal: [
@@ -35,14 +37,14 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">OP</span>
+                <span className="text-white font-bold text-sm">AG</span>
               </div>
               <span className="font-display font-bold text-lg text-gray-900">
-                OutboundPro
+                Accelrated Growth
               </span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
-              Done-for-you outbound that books qualified meetings on your calendar.
+              Done-for-you B2B appointment setting and cold email outreach for SaaS companies. We build your go-to-market outbound engine.
             </p>
           </div>
 
@@ -70,7 +72,7 @@ export function Footer() {
 
         <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} OutboundPro. All rights reserved.
+            &copy; {new Date().getFullYear()} Accelrated Growth. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {["Twitter", "LinkedIn", "YouTube"].map((social) => (

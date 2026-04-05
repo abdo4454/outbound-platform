@@ -1,4 +1,4 @@
-# OutboundPro Platform
+# Accelrated Growth Platform
 
 Full-stack outbound marketing agency platform built with Next.js 14, Prisma, Stripe, Clerk, and Tailwind CSS.
 

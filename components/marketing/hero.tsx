@@ -1,19 +1,18 @@
 "use client";
 
-import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const STATS = [
-  { value: "2,847", label: "Meetings Booked" },
-  { value: "94%", label: "Client Retention" },
-  { value: "38%", label: "Avg Reply Rate" },
-  { value: "<48h", label: "To First Campaign" },
+  { value: "3,200+", label: "Meetings Booked" },
+  { value: "92%", label: "Client Retention" },
+  { value: "31/mo", label: "Avg Meetings / Client" },
+  { value: "< 3 wks", label: "To First Booked Meeting" },
 ];
 
 const TRUST_POINTS = [
   "No long-term contracts",
-  "Dedicated account manager",
-  "Transparent reporting",
+  "B2B SaaS specialists only",
+  "Meetings guaranteed or we work free",
 ];
 
 export function HeroSection() {
@@ -21,10 +20,8 @@ export function HeroSection() {
     <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-midnight-950">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        {/* Gradient orbs */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-brand-600/20 blur-[128px] animate-pulse-slow" />
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-brand-400/10 blur-[128px] animate-pulse-slow animate-delay-200" />
-        {/* Grid */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -33,7 +30,6 @@ export function HeroSection() {
             backgroundSize: "60px 60px",
           }}
         />
-        {/* Noise texture */}
         <div className="absolute inset-0 noise opacity-40" />
       </div>
 
@@ -43,33 +39,33 @@ export function HeroSection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 mb-8 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
             <span className="text-brand-300 text-sm font-medium">
-              Now booking Q2 2026 clients
+              Now booking Q2 2026 — B2B SaaS outbound clients
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="font-display text-display-lg sm:text-display-xl text-white mb-6 animate-fade-up">
-            We book meetings.
+            Predictable pipeline
             <br />
-            <span className="text-gradient-dark">You close deals.</span>
+            <span className="text-gradient-dark">for B2B SaaS companies.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up animate-delay-100">
-            Done-for-you outbound that fills your calendar with qualified
-            prospects. Cold email, LinkedIn, lead research — handled end to end.
+            Done-for-you cold email outreach, LinkedIn outbound, and appointment
+            setting — fully managed go-to-market execution that delivers 20–50
+            qualified sales meetings per month. You just close.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-fade-up animate-delay-200">
-            <Link href="#pricing" className="btn-primary btn-lg group">
-              Book a Discovery Call
+            <a href="#book" className="btn-primary btn-lg group">
+              Book a Free Strategy Call
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <button className="btn-ghost text-gray-400 hover:text-white btn-lg group">
-              <Play className="w-5 h-5 fill-current" />
-              Watch How It Works
-            </button>
+            </a>
+            <a href="#results" className="btn-ghost text-gray-400 hover:text-white btn-lg">
+              See SaaS Results
+            </a>
           </div>
 
           {/* Trust points */}

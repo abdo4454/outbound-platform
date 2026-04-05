@@ -1,30 +1,42 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
-const isProtectedRoute = createRouteMatcher([
-  "/dashboard(.*)",
-  "/admin(.*)",
-  "/onboarding(.*)",
-  "/api/reports(.*)",
-]);
+const SESSION_COOKIE = "ag_session";
+const DEMO_MODE = process.env.DEMO_MODE === "true";
 
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/pricing",
-  "/about",
-  "/blog(.*)",
-  "/case-studies(.*)",
-  "/contact",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/api/leads",
-  "/api/webhooks(.*)",
-]);
+const getSecret = () =>
+  new TextEncoder().encode(
+    process.env.AUTH_SECRET ?? "dev-secret-CHANGE-in-production-32-chars!!"
+  );
 
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
+const PROTECTED = ["/dashboard", "/admin", "/onboarding"];
+const isProtected = (p: string) => PROTECTED.some((r) => p.startsWith(r));
+
+export default async function middleware(req: NextRequest) {
+  if (DEMO_MODE) return NextResponse.next();
+
+  const { pathname } = req.nextUrl;
+  if (!isProtected(pathname)) return NextResponse.next();
+
+  const token = req.cookies.get(SESSION_COOKIE)?.value;
+  if (!token) {
+    return NextResponse.redirect(new URL("/sign-in", req.url));
   }
-});
+
+  try {
+    const { payload } = await jwtVerify(token, getSecret());
+    if (!payload.sub) throw new Error("no sub");
+
+    const orgId = payload.orgId as string | null | undefined;
+    if (!orgId && isProtected(pathname)) {
+      return NextResponse.redirect(new URL("/pending", req.url));
+    }
+
+    return NextResponse.next();
+  } catch {
+    return NextResponse.redirect(new URL("/sign-in", req.url));
+  }
+}
 
 export const config = {
   matcher: [

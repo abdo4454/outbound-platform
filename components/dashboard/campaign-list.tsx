@@ -1,52 +1,35 @@
 import { cn } from "@/lib/utils";
 
-const CAMPAIGNS = [
-  {
-    name: "Q2 Enterprise — VP Engineering",
-    status: "active",
-    sent: 3240,
-    openRate: 67.3,
-    replyRate: 22.1,
-    meetings: 14,
-    domain: "outreach1.acme.io",
-  },
-  {
-    name: "SMB SaaS — Founders",
-    status: "active",
-    sent: 5120,
-    openRate: 58.9,
-    replyRate: 15.4,
-    meetings: 11,
-    domain: "reach.acme.io",
-  },
-  {
-    name: "Mid-Market — Head of Sales",
-    status: "active",
-    sent: 2890,
-    openRate: 71.2,
-    replyRate: 24.8,
-    meetings: 9,
-    domain: "connect.acme.io",
-  },
-  {
-    name: "ABM — Target Account List",
-    status: "paused",
-    sent: 840,
-    openRate: 82.1,
-    replyRate: 38.2,
-    meetings: 0,
-    domain: "hello.acme.io",
-  },
-];
+interface Campaign {
+  name: string;
+  status: string;
+  sent: number;
+  openRate: number;
+  replyRate: number;
+  meetings: number;
+  domain: string | null;
+}
 
-const STATUS_STYLES = {
+const STATUS_STYLES: Record<string, string> = {
+  ACTIVE: "badge-success",
   active: "badge-success",
+  PAUSED: "badge-warning",
   paused: "badge-warning",
+  DRAFT: "badge-gray",
   draft: "badge-gray",
+  COMPLETED: "badge-brand",
   completed: "badge-brand",
 };
 
-export function CampaignList() {
+export function CampaignList({ campaigns }: { campaigns: Campaign[] }) {
+  if (campaigns.length === 0) {
+    return (
+      <div className="py-12 text-center text-sm text-gray-400">
+        No campaigns yet. Data syncs from Instantly every 15 minutes.
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-x-auto -mx-6">
       <table className="w-full">
@@ -61,28 +44,30 @@ export function CampaignList() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-50">
-          {CAMPAIGNS.map((campaign) => (
+          {campaigns.map((campaign) => (
             <tr key={campaign.name} className="hover:bg-gray-50/50 transition-colors cursor-pointer">
               <td className="px-6 py-4">
                 <div className="font-medium text-sm text-gray-900">{campaign.name}</div>
-                <div className="text-xs text-gray-400">{campaign.domain}</div>
+                {campaign.domain && <div className="text-xs text-gray-400">{campaign.domain}</div>}
               </td>
               <td className="px-6 py-4">
-                <span className={cn(STATUS_STYLES[campaign.status as keyof typeof STATUS_STYLES])}>
-                  {campaign.status}
+                <span className={cn(STATUS_STYLES[campaign.status] ?? "badge-gray")}>
+                  {campaign.status.charAt(0) + campaign.status.slice(1).toLowerCase()}
                 </span>
               </td>
               <td className="px-6 py-4 text-right text-sm text-gray-600">
-                {campaign.sent.toLocaleString()}
+                {campaign.sent > 0 ? campaign.sent.toLocaleString() : "—"}
               </td>
               <td className="px-6 py-4 text-right text-sm text-gray-600">
-                {campaign.openRate}%
+                {campaign.sent > 0 ? `${campaign.openRate.toFixed(1)}%` : "—"}
               </td>
               <td className="px-6 py-4 text-right text-sm text-gray-600">
-                {campaign.replyRate}%
+                {campaign.sent > 0 ? `${campaign.replyRate.toFixed(1)}%` : "—"}
               </td>
               <td className="px-6 py-4 text-right">
-                <span className="text-sm font-semibold text-gray-900">{campaign.meetings}</span>
+                <span className="text-sm font-semibold text-gray-900">
+                  {campaign.meetings > 0 ? campaign.meetings : "—"}
+                </span>
               </td>
             </tr>
           ))}

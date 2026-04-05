@@ -1,20 +1,36 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error("RESEND_API_KEY is not set");
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
 }
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM = process.env.EMAIL_FROM || `Accelrated Growth <${process.env.GMAIL_USER}>`;
 
-const FROM = process.env.EMAIL_FROM || "OutboundPro <hello@outboundpro.com>";
+export async function sendEmail({
+  to,
+  subject,
+  html,
+}: {
+  to: string;
+  subject: string;
+  html: string;
+}) {
+  const transporter = createTransporter();
+  return transporter.sendMail({ from: FROM, to, subject, html });
+}
 
 // ---- Email Templates ----
 
 export async function sendWelcomeEmail(to: string, name: string) {
-  return resend.emails.send({
-    from: FROM,
+  return sendEmail({
     to,
-    subject: "Welcome to OutboundPro — Let's get you set up",
+    subject: "Welcome to Accelrated Growth — Let's get you set up",
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #1a1f35;">Welcome aboard, ${name}!</h1>
@@ -40,8 +56,7 @@ export async function sendBookingNotification(
   prospectCompany: string,
   bookingTime: string
 ) {
-  return resend.emails.send({
-    from: FROM,
+  return sendEmail({
     to,
     subject: `New meeting booked: ${prospectName} from ${prospectCompany}`,
     html: `
@@ -67,8 +82,7 @@ export async function sendLeadNotification(
   leadCompany: string | null,
   source: string | null
 ) {
-  return resend.emails.send({
-    from: FROM,
+  return sendEmail({
     to,
     subject: `New lead: ${leadEmail}${leadCompany ? ` from ${leadCompany}` : ""}`,
     html: `
@@ -94,8 +108,7 @@ export async function sendWeeklyReport(
     meetingsBooked: number;
   }
 ) {
-  return resend.emails.send({
-    from: FROM,
+  return sendEmail({
     to,
     subject: `Your Weekly Outbound Report — ${metrics.meetingsBooked} meetings booked`,
     html: `

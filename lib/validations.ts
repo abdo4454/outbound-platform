@@ -3,7 +3,7 @@ import { z } from "zod";
 // ---- Lead Capture ----
 
 export const leadFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters").optional().or(z.literal("")),
   email: z.string().email("Please enter a valid email"),
   company: z.string().optional(),
   phone: z.string().optional(),

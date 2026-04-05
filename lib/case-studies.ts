@@ -1,0 +1,68 @@
+import { CalendarCheck, TrendingUp, DollarSign } from "lucide-react";
+
+export const CASE_STUDIES = [
+  {
+    slug: "devtools-series-a",
+    company: "B2B DevTools SaaS",
+    stage: "Series A",
+    industry: "Developer Tools",
+    timeframe: "8 weeks",
+    challenge: "Engineering-led company with no sales motion. Founder doing all outbound manually — 4 meetings/month.",
+    result: "43 qualified meetings/month with VP Engineering and CTO buyers.",
+    metrics: [
+      { label: "Meetings/Month", value: "43", icon: CalendarCheck, color: "text-green-600 bg-green-50" },
+      { label: "Reply Rate", value: "18.7%", icon: TrendingUp, color: "text-brand-600 bg-brand-50" },
+      { label: "Pipeline Generated", value: "$1.2M", icon: DollarSign, color: "text-amber-600 bg-amber-50" },
+    ],
+    tags: ["Cold Email", "VP Engineering", "Series A"],
+    accentColor: "from-brand-600 to-brand-700",
+  },
+  {
+    slug: "hr-tech-enterprise",
+    company: "HR Tech Platform",
+    stage: "Series B",
+    industry: "HR & Workforce",
+    timeframe: "12 weeks",
+    challenge: "Great product but couldn't penetrate enterprise HR buyers. SDR team struggled with cold email deliverability.",
+    result: "$2.4M in net-new pipeline. 8 enterprise deals closed in Q1.",
+    metrics: [
+      { label: "Pipeline Generated", value: "$2.4M", icon: DollarSign, color: "text-green-600 bg-green-50" },
+      { label: "Enterprise Deals Closed", value: "8", icon: CalendarCheck, color: "text-brand-600 bg-brand-50" },
+      { label: "Open Rate", value: "71%", icon: TrendingUp, color: "text-amber-600 bg-amber-50" },
+    ],
+    tags: ["Cold Email", "LinkedIn", "Enterprise", "Series B"],
+    accentColor: "from-indigo-600 to-indigo-700",
+  },
+  {
+    slug: "fintech-seed",
+    company: "FinTech Compliance SaaS",
+    stage: "Seed",
+    industry: "FinTech",
+    timeframe: "6 weeks",
+    challenge: "Niche compliance product targeting CFOs and VPs of Finance. Very technical buyers, hard to reach.",
+    result: "28 meetings booked with C-suite finance buyers in 6 weeks. 3 enterprise pilots launched.",
+    metrics: [
+      { label: "Meetings Booked", value: "28", icon: CalendarCheck, color: "text-green-600 bg-green-50" },
+      { label: "C-Suite Reached", value: "87%", icon: TrendingUp, color: "text-brand-600 bg-brand-50" },
+      { label: "Pilots Launched", value: "3", icon: DollarSign, color: "text-amber-600 bg-amber-50" },
+    ],
+    tags: ["Cold Email", "CFO", "C-Suite", "Seed"],
+    accentColor: "from-emerald-600 to-emerald-700",
+  },
+  {
+    slug: "saas-marketplace",
+    company: "B2B Marketplace SaaS",
+    stage: "Series A",
+    industry: "Marketplace",
+    timeframe: "10 weeks",
+    challenge: "Two-sided marketplace needing supply-side outreach at scale. Couldn't get consistent meeting volume.",
+    result: "62 supply-side partnership meetings in 10 weeks. Outbound became top acquisition channel.",
+    metrics: [
+      { label: "Meetings/Month", value: "62", icon: CalendarCheck, color: "text-green-600 bg-green-50" },
+      { label: "Reply Rate", value: "22.4%", icon: TrendingUp, color: "text-brand-600 bg-brand-50" },
+      { label: "Cost per Meeting", value: "$81", icon: DollarSign, color: "text-amber-600 bg-amber-50" },
+    ],
+    tags: ["Cold Email", "LinkedIn", "Marketplace", "Series A"],
+    accentColor: "from-rose-600 to-rose-700",
+  },
+];

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="iconGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1333e1"/>
+      <stop offset="100%" stop-color="#3366ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="url(#iconGrad)"/>
+  <!-- Growth line chart -->
+  <polyline
+    points="5,22 11,15 17,18 25,8"
+    stroke="rgba(255,255,255,0.35)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <polyline
+    points="5,22 11,15 17,18 25,8"
+    stroke="white"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    stroke-dasharray="28"
+    stroke-dashoffset="0"
+  />
+  <!-- Peak dot -->
+  <circle cx="25" cy="8" r="2.5" fill="white"/>
+  <!-- Arrow tip -->
+  <polyline
+    points="21,7 25,8 24,12"
+    stroke="white"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg>

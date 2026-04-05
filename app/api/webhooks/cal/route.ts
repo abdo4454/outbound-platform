@@ -88,20 +88,22 @@ export async function POST(req: NextRequest) {
           ),
         ]);
 
-        // Log activity
-        await db.activityLog.create({
-          data: {
-            orgId: existingLead?.orgId || "system",
-            action: "booking.created",
-            details: {
-              prospectName,
-              prospectEmail,
-              prospectCompany,
-              bookingTime: startTime,
-              assignedTo: organizer?.name,
+        // Log activity (only if we have a real orgId)
+        if (existingLead?.orgId) {
+          await db.activityLog.create({
+            data: {
+              orgId: existingLead.orgId,
+              action: "booking.created",
+              details: JSON.stringify({
+                prospectName,
+                prospectEmail,
+                prospectCompany,
+                bookingTime: startTime,
+                assignedTo: organizer?.name,
+              }),
             },
-          },
-        });
+          });
+        }
 
         break;
       }
@@ -128,14 +130,24 @@ export async function POST(req: NextRequest) {
 
       // ---- Booking Rescheduled ----
       case "BOOKING_RESCHEDULED": {
-        // Log but don't change status
-        await db.activityLog.create({
-          data: {
-            orgId: "system",
-            action: "booking.rescheduled",
-            details: payload.payload,
-          },
-        });
+        // Log but don't change status — skip if no orgId available
+        const { attendees: reschAtts } = payload.payload;
+        const reschEmail = reschAtts?.[0]?.email;
+        if (reschEmail) {
+          const reschLead = await db.lead.findFirst({
+            where: { email: reschEmail },
+            orderBy: { createdAt: "desc" },
+          });
+          if (reschLead?.orgId) {
+            await db.activityLog.create({
+              data: {
+                orgId: reschLead.orgId,
+                action: "booking.rescheduled",
+                details: JSON.stringify({ email: reschEmail, startTime: payload.payload.startTime }),
+              },
+            });
+          }
+        }
         break;
       }
     }

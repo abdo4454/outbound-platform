@@ -1,10 +1,6 @@
 import Stripe from "stripe";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set");
-}
-
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "sk_test_placeholder", {
   apiVersion: "2024-04-10",
   typescript: true,
 });
@@ -42,7 +38,7 @@ export const PLANS = {
       "Unlimited sending domains",
       "Unlimited emails",
       "Multi-channel (email + LinkedIn)",
-      "Real-time dashboard",
+      "Live campaign dashboard (updates every 15 min)",
       "Custom integrations",
       "Priority support",
       "Quarterly business reviews",
