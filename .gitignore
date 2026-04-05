@@ -45,3 +45,4 @@ prisma/*.db-journal
 # IDE
 .idea/
 .vscode/
+prisma/prisma/
