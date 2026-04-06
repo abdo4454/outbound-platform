@@ -44,19 +44,19 @@ export default function PrivacyPage() {
               <p className="font-semibold text-gray-800 mb-2">Information you provide directly:</p>
               <ul className="list-disc pl-6 space-y-1 mb-4">
                 <li>Name, email address, company name, and phone number when you submit a form or book a call</li>
-                <li>Billing information (processed securely by Stripe — we never store full card numbers)</li>
+                <li>Billing information (processed securely by our payment processor — we never store full card numbers)</li>
                 <li>Communications you send us by email or through the platform</li>
                 <li>Account information when you register as a client</li>
               </ul>
               <p className="font-semibold text-gray-800 mb-2">Information collected automatically:</p>
               <ul className="list-disc pl-6 space-y-1 mb-4">
                 <li>IP address, browser type, operating system, and referring URLs</li>
-                <li>Pages visited, time on site, and click behavior via analytics tools (PostHog, Google Analytics)</li>
+                <li>Pages visited, time on site, and click behavior via analytics tools</li>
                 <li>Cookies and similar tracking technologies (see Section 7)</li>
               </ul>
               <p className="font-semibold text-gray-800 mb-2">Prospect data (for outbound services):</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Business contact data (name, title, work email, company) sourced from B2B databases including Apollo.io and LinkedIn</li>
+                <li>Business contact data (name, title, work email, company) sourced from reputable B2B data providers and public professional networks</li>
                 <li>This data is processed under legitimate interest as the lawful basis under GDPR Article 6(1)(f)</li>
               </ul>
             </div>
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
               <h2 className="font-display text-xl font-bold text-gray-900 mb-3">5. Sharing your information</h2>
               <p>We do not sell your personal data. We share it only with:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
-                <li><strong className="text-gray-800">Service providers</strong> — Stripe (billing), Resend/Gmail (email), Supabase (database), Clerk (authentication), PostHog (analytics), Inngest (workflow automation). Each is bound by data processing agreements.</li>
+                <li><strong className="text-gray-800">Service providers</strong> — trusted third-party vendors who assist in delivering our services, including payment processing, email delivery, data infrastructure, and analytics. Each is bound by data processing agreements.</li>
                 <li><strong className="text-gray-800">Legal authorities</strong> — when required by law, court order, or to protect our rights</li>
                 <li><strong className="text-gray-800">Business transfers</strong> — in connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections</li>
               </ul>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
               <p>We use the following types of cookies:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li><strong className="text-gray-800">Essential cookies</strong> — required for authentication and basic site functionality. Cannot be disabled.</li>
-                <li><strong className="text-gray-800">Analytics cookies</strong> — PostHog and Google Analytics to understand how visitors use our site. You may opt out via your browser settings or our cookie banner.</li>
+                <li><strong className="text-gray-800">Analytics cookies</strong> — used to understand how visitors use our site. You may opt out via your browser settings or our cookie banner.</li>
                 <li><strong className="text-gray-800">Marketing cookies</strong> — used to track conversions and attribution from paid campaigns. Optional and controlled via consent banner.</li>
               </ul>
             </div>

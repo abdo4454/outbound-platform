@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -9,12 +9,13 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const NAV = [
+const NAV: { label: string; href: string; icon: React.ElementType; exact?: boolean; hidden?: boolean }[] = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard, exact: true },
   { label: "Clients", href: "/admin/clients", icon: Building2 },
   { label: "Leads", href: "/admin/leads", icon: Users },
   { label: "Pipeline", href: "/admin/pipeline", icon: GitBranch },
   { label: "Outbound", href: "/admin/outbound", icon: Send },
+  { label: "Campaigns", href: "/admin/campaigns", icon: Send, hidden: true },
   { label: "Revenue", href: "/admin/revenue", icon: DollarSign },
   { label: "Referrals", href: "/admin/referrals", icon: Share2 },
   { label: "Activity", href: "/admin/activity", icon: Activity },
@@ -56,7 +57,7 @@ export function AdminLayoutClient({
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-          {NAV.map((item) => {
+          {NAV.filter((item) => !item.hidden).map((item) => {
             const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
             return (
               <Link

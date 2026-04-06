@@ -113,13 +113,13 @@ export default function DPAPage() {
                   </thead>
                   <tbody>
                     {[
-                      ["Supabase", "Database & storage", "EU / US"],
-                      ["Apollo.io", "Prospect data sourcing", "US"],
-                      ["Instantly.ai", "Email sending infrastructure", "US"],
-                      ["Google (Gmail/Workspace)", "Email delivery", "US / EU"],
-                      ["Stripe", "Payment processing", "US / EU"],
-                      ["Inngest", "Workflow automation", "US"],
-                      ["PostHog", "Analytics", "US / EU"],
+                      ["Secure Data Infrastructure Provider", "Database & storage", "EU / US"],
+                      ["B2B Data Provider", "Prospect data sourcing", "US"],
+                      ["Email Delivery Provider", "Email sending infrastructure", "US"],
+                      ["Communication Platform", "Email delivery", "US / EU"],
+                      ["Payment Processor", "Payment processing", "US / EU"],
+                      ["Automation Platform", "Workflow automation", "US"],
+                      ["Analytics Provider", "Analytics", "US / EU"],
                     ].map(([name, purpose, location]) => (
                       <tr key={name} className="border-b border-gray-100">
                         <td className="p-3 border border-gray-200 font-medium text-gray-800">{name}</td>

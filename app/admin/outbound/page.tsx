@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Search, Mail, Users, ArrowUpRight } from "lucide-react";
+import { Search, Mail, Users, ArrowUpRight, Plus } from "lucide-react";
 import Link from "next/link";
 
 const STATUS_CONFIG: Record<string, { label: string; cls: string }> = {
@@ -76,12 +76,20 @@ export default async function OutboundPage() {
               {rows.filter((c) => c.status === "ACTIVE").length} active · {rows.length} total · synced from Instantly every 15 min
             </p>
           </div>
+          <Link href="/admin/campaigns/new" className="btn-primary btn-sm flex items-center gap-1.5">
+            <Plus className="w-4 h-4" /> New Campaign
+          </Link>
         </div>
 
         {rows.length === 0 ? (
-          <div className="py-12 text-center text-sm text-gray-400">
-            No campaigns yet. Connect Instantly or Apollo in each{" "}
-            <Link href="/admin/clients" className="text-brand-600 hover:underline">client profile</Link> to start syncing.
+          <div className="py-12 text-center">
+            <p className="text-sm text-gray-400 mb-4">
+              No campaigns yet. Create one or connect Instantly in a{" "}
+              <Link href="/admin/clients" className="text-brand-600 hover:underline">client profile</Link>.
+            </p>
+            <Link href="/admin/campaigns/new" className="btn-primary btn-sm">
+              Create first campaign
+            </Link>
           </div>
         ) : (
           <div className="overflow-x-auto -mx-6">
@@ -99,9 +107,11 @@ export default async function OutboundPage() {
                   const replyRate = c.sent > 0 ? ((c.replies / c.sent) * 100).toFixed(1) : null;
                   const cfg = STATUS_CONFIG[c.status] ?? STATUS_CONFIG.DRAFT;
                   return (
-                    <tr key={c.id} className="hover:bg-gray-50/50 transition-colors">
+                    <tr key={c.id} className="hover:bg-gray-50/50 transition-colors group">
                       <td className="px-6 py-4">
-                        <div className="font-medium text-sm text-gray-900">{c.name}</div>
+                        <Link href={`/admin/campaigns/${c.id}`} className="font-medium text-sm text-gray-900 group-hover:text-brand-600 transition-colors">
+                          {c.name}
+                        </Link>
                         {c.sendingDomain && <div className="text-xs text-gray-400 mt-0.5">{c.sendingDomain}</div>}
                       </td>
                       <td className="px-6 py-4">
@@ -172,6 +182,9 @@ export default async function OutboundPage() {
                     );
                   })()}
                 </div>
+                <Link href={`/admin/campaigns/new?orgId=${o.org.id}`} className="btn-secondary btn-sm ml-4 flex-shrink-0">
+                  + Campaign
+                </Link>
               </div>
             ))}
           </div>

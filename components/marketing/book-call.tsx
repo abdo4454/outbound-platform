@@ -104,23 +104,32 @@ export function BookCall() {
                 ))}
               </div>
 
-              {/* Social proof */}
-              <div className="mt-10 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed italic">
-                  &ldquo;The strategy call alone was worth it. They showed me exactly
-                  why our previous outbound failed and what to do differently. We
-                  signed up that week.&rdquo;
-                </p>
-                <p className="text-gray-400 text-xs mt-2">
-                  — Sarah K., VP Sales · B2B SaaS, Series A
-                </p>
+              {/* Industry insights */}
+              <div className="mt-10 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm space-y-4">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">What the industry says</p>
+                {[
+                  {
+                    stat: "6–9 mo",
+                    insight: "Average ramp time for an in-house SDR to produce consistent pipeline — vs. 2 weeks with a managed outbound team.",
+                  },
+                  {
+                    stat: "73%",
+                    insight: "Of B2B buyers say a well-timed cold email is their preferred first point of contact from a new vendor.",
+                  },
+                  {
+                    stat: "3×",
+                    insight: "More meetings booked when outbound is run by a dedicated specialist vs. split across an AE or founder.",
+                  },
+                ].map((item) => (
+                  <div key={item.stat} className="flex items-start gap-3">
+                    <div className="text-brand-600 font-display font-bold text-base leading-none flex-shrink-0 w-12 text-right pt-0.5">
+                      {item.stat}
+                    </div>
+                    <p className="text-gray-500 text-xs leading-relaxed border-l border-gray-100 pl-3">
+                      {item.insight}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 

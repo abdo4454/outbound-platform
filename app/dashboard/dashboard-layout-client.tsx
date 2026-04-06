@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { ChatWidget } from "@/components/dashboard/chat-widget";
 import {
   LayoutDashboard, BarChart3, Mail, Settings, Bell,
   ChevronLeft, ChevronRight, FileText, Users, Zap,
@@ -159,6 +160,9 @@ export function DashboardLayoutClient({ children, orgName, initials }: Props) {
         {/* Page Content */}
         <main className="p-6">{children}</main>
       </div>
+
+      {/* AI Chat Widget */}
+      <ChatWidget />
     </div>
   );
 }
