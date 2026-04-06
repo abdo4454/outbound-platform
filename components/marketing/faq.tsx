@@ -19,11 +19,11 @@ const FAQS = [
   },
   {
     q: "Our buyers are technical — CTOs, engineers, developers. Can you write for them?",
-    a: "Yes, and we're better at it than most agencies. Technical buyers hate generic sales copy. We research each prospect, reference real technical pain points, and keep emails short and direct. Our DevTools and infrastructure SaaS clients consistently see 30%+ reply rates with technical ICP.",
+    a: "Yes, and we approach it differently than most agencies. Technical buyers hate generic sales copy. We research each prospect, reference real technical pain points, and keep emails short and direct. The formula is relevance over volume — fewer, sharper emails to exactly the right person.",
   },
   {
     q: "What cold email strategies do you use to get high reply rates?",
-    a: "We combine four things that most agencies skip: hyper-personalized first lines based on real prospect research, trigger-based targeting (funding rounds, hiring surges, tech stack signals), multi-step sequences with value at every touchpoint, and rigorous deliverability management with dedicated sending domains. Our average reply rate is 18.7% versus the 3–5% industry average.",
+    a: "We combine four things that most agencies skip: hyper-personalized first lines based on real prospect research, trigger-based targeting (funding rounds, hiring surges, tech stack signals), multi-step sequences with value at every touchpoint, and rigorous deliverability management with dedicated sending domains. The industry average reply rate is 3–5% — our target is 8–15%.",
   },
   {
     q: "We're PLG — can you add enterprise outbound alongside our self-serve motion?",
@@ -39,7 +39,7 @@ const FAQS = [
   },
   {
     q: "What's your guarantee?",
-    a: "We guarantee a minimum number of qualified meetings per month based on your ICP and plan. If we fall short, we work for free until we make it up. We've only triggered this guarantee twice in three years — and both times we over-delivered in the following month.",
+    a: "We guarantee a minimum number of qualified meetings per month based on your ICP and plan. If we fall short, we keep working until we make it up — no extra charge. It's in the contract.",
   },
   {
     q: "Do you run LinkedIn outreach too?",

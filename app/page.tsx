@@ -112,7 +112,7 @@ const faqSchema = {
       name: "What cold email strategies do you use?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We combine hyper-personalized first lines, trigger-based targeting (funding rounds, hiring signals, tech stack changes), multi-step sequences, and rigorous deliverability management. Our average reply rate is 18.7% vs. the industry average of 3–5%.",
+        text: "We combine hyper-personalized first lines, trigger-based targeting (funding rounds, hiring signals, tech stack changes), multi-step sequences, and rigorous deliverability management. The industry average reply rate is 3–5% — our target is 8–15%.",
       },
     },
     {
@@ -120,7 +120,7 @@ const faqSchema = {
       name: "What's your guarantee?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We guarantee a minimum number of qualified meetings per month based on your ICP and plan. If we fall short, we work for free until we make it up. We've only triggered this guarantee twice in three years — and both times we over-delivered in the following month.",
+        text: "We guarantee a minimum number of qualified meetings per month based on your ICP and plan. If we fall short, we keep working until we make it up — no extra charge. It's in the contract.",
       },
     },
     {

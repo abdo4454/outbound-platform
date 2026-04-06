@@ -7,14 +7,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | B2B SaaS Outbound Agency & Appointment Setting Team",
   description:
-    "Meet the team behind Accelerated Growth — a specialist B2B SaaS outbound agency. Cold email, LinkedIn outreach, appointment setting, and go-to-market execution. 92% client retention, 3,200+ meetings booked.",
+    "Meet the team behind Accelerated Growth — a specialist B2B SaaS outbound agency. Cold email, LinkedIn outreach, appointment setting, and go-to-market execution. Built for founders and revenue teams who need predictable pipeline.",
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/about`,
   },
   openGraph: {
     title: "About Accelerated Growth | B2B SaaS Outbound & Appointment Setting Agency",
     description:
-      "We build outbound engines for B2B SaaS companies. 50+ clients, 3,200+ meetings booked, 92% retention. Specialists in cold email, appointment setting, and go-to-market outbound.",
+      "We build outbound engines for B2B SaaS companies. Specialists in cold email, appointment setting, and go-to-market outbound — fully managed, results-focused.",
   },
 };
 
@@ -22,7 +22,7 @@ const VALUES = [
   {
     icon: Target,
     title: "Precision over volume",
-    description: "We'd rather send 500 hyper-targeted emails than 5,000 generic blasts. ICP precision is what separates 18% reply rates from 2%.",
+    description: "We'd rather send 500 hyper-targeted emails than 5,000 generic blasts. ICP precision is what separates a 10% reply rate from a 2% one.",
   },
   {
     icon: Zap,
@@ -31,8 +31,8 @@ const VALUES = [
   },
   {
     icon: Heart,
-    title: "Client success is our retention",
-    description: "92% of our clients renew. That's not because of contracts — it's because meetings keep coming. Pipeline growth is the only metric we care about.",
+    title: "Client success is everything",
+    description: "We're building this agency on results, not contracts. If meetings aren't coming, we keep working until they do. Pipeline growth is the only metric we care about.",
   },
 ];
 
@@ -40,34 +40,34 @@ const TEAM = [
   {
     name: "Alex Rivera",
     title: "Founder & CEO",
-    bio: "Former SDR and sales leader at two Series B SaaS companies. Built the outbound playbook that generated $8M in pipeline before starting Accelerated Growth.",
+    bio: "Former SDR and sales leader with years of B2B SaaS experience. Built Accelerated Growth to give founders access to the outbound infrastructure most companies can't build in-house.",
     initials: "AR",
   },
   {
     name: "Maya Patel",
     title: "Head of Strategy",
-    bio: "10 years running outbound for B2B SaaS. Previously at Outreach and Apollo. Personally designs the ICP and messaging for every new client.",
+    bio: "Deep background in B2B outbound strategy. Personally designs the ICP research, messaging, and sequence structure for every new client campaign.",
     initials: "MP",
   },
   {
     name: "Jordan Kim",
     title: "Head of Deliverability",
-    bio: "The engineer behind our infrastructure. Our 97% inbox placement rate is his work. Previously built email systems at SendGrid.",
+    bio: "The technical mind behind our sending infrastructure. Owns domain setup, warmup protocols, and inbox placement — the unglamorous work that makes outbound actually land.",
     initials: "JK",
   },
   {
     name: "Sam Torres",
     title: "Client Success Lead",
-    bio: "Makes sure every client hits their meeting targets. Owns the weekly reports, optimization cycles, and escalations. Never misses a beat.",
+    bio: "Makes sure every client hits their meeting targets. Owns weekly reports, optimization cycles, and client communication. The person keeping campaigns moving.",
     initials: "ST",
   },
 ];
 
 const STATS = [
-  { value: "50+", label: "SaaS companies helped" },
-  { value: "3,200+", label: "Qualified meetings booked" },
-  { value: "92%", label: "Client retention rate" },
-  { value: "18.7%", label: "Average reply rate" },
+  { value: "20–50", label: "Target meetings / month" },
+  { value: "8–15%", label: "Reply rate target" },
+  { value: "2 wks", label: "From signed to live" },
+  { value: "90 days", label: "To full campaign velocity" },
 ];
 
 export default function AboutPage() {

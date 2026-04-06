@@ -145,7 +145,7 @@ export function ROICalculator() {
             </a>
 
             <p className="text-center text-xs text-gray-600">
-              Based on averages across 50+ SaaS campaigns we&apos;ve run
+              Projections based on B2B SaaS industry benchmarks — your results depend on ICP, deal size, and close rate
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { BookCall } from "@/components/marketing/book-call";
-import { Star, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
 import { PixelViewContent } from "@/components/analytics/pixel-view-content";
 
@@ -19,18 +19,14 @@ export const metadata: Metadata = {
   },
 };
 
-const TESTIMONIALS = [
+const WHAT_YOU_GET = [
   {
-    quote: "The call alone was worth an hour of my time. They showed me exactly why our previous outbound failed and what to fix. We signed up that week.",
-    name: "Sarah K.",
-    title: "VP Sales · B2B SaaS, Series A",
-    initials: "SK",
+    heading: "Your ICP, mapped",
+    body: "We'll identify your best-fit buyers, which channels reach them, and what they actually care about.",
   },
   {
-    quote: "Most agencies pitch you on the call. These guys actually audited our existing sequences and told us what was broken before we even paid anything.",
-    name: "David M.",
-    title: "CEO · HR Tech, Seed",
-    initials: "DM",
+    heading: "A realistic meeting estimate",
+    body: "Based on your market, we'll give you an honest number — not a sales pitch number.",
   },
 ];
 
@@ -65,29 +61,15 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* Testimonials above fold */}
+      {/* What you get on the call */}
       <section className="py-12 bg-gray-50 border-b border-gray-100">
         <div className="section">
+          <p className="text-center text-xs font-semibold text-gray-400 uppercase tracking-wider mb-6">What we cover on the call</p>
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed italic mb-4">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-xs">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">{t.name}</div>
-                    <div className="text-xs text-gray-400">{t.title}</div>
-                  </div>
-                </div>
+            {WHAT_YOU_GET.map((item) => (
+              <div key={item.heading} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                <h3 className="font-display font-bold text-gray-900 mb-2">{item.heading}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
@@ -104,8 +86,8 @@ export default function BookPage() {
             {[
               "No pitch — just strategy",
               "Booked within 1 business hour",
-              "30 SaaS companies helped this quarter",
-              "92% client retention rate",
+              "30 minutes, free",
+              "Real advice, whether you work with us or not",
             ].map((t) => (
               <div key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-brand-400" />

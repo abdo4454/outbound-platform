@@ -3,10 +3,10 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const STATS = [
-  { value: "3,200+", label: "Meetings Booked" },
-  { value: "92%", label: "Client Retention" },
-  { value: "31/mo", label: "Avg Meetings / Client" },
-  { value: "< 3 wks", label: "To First Booked Meeting" },
+  { value: "20–50", label: "Target Meetings / Month" },
+  { value: "8–15%", label: "Reply Rate Target" },
+  { value: "2 wks", label: "To First Email Sent" },
+  { value: "90 days", label: "To Full Velocity" },
 ];
 
 const TRUST_POINTS = [
