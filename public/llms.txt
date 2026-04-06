@@ -1,0 +1,111 @@
+# Accelerated Growth — B2B SaaS Outbound & Appointment Setting Agency
+
+## What We Do
+
+Accelerated Growth is a fully-managed outbound agency built exclusively for B2B SaaS companies. We handle every part of the outbound sales process — ICP research, cold email copywriting, sending infrastructure, LinkedIn outreach, reply management, and appointment setting — and deliver qualified sales meetings directly onto our clients' calendars.
+
+Our clients focus on running discovery calls and closing deals. We handle everything upstream from first contact to booked meeting.
+
+## Who We Serve
+
+- B2B SaaS companies from seed stage to Series C
+- Founders and revenue leaders who need predictable pipeline without hiring in-house SDRs
+- Companies with a clear ICP and a product that is actively selling
+- Teams who want a done-for-you motion that complements or replaces an internal sales development function
+
+## Core Services
+
+**Cold Email Outbound**
+End-to-end cold email management: ICP targeting, contact sourcing, sending domain setup and warmup, sequence copywriting, A/B testing, deliverability monitoring, and reply handling.
+
+**LinkedIn Outreach**
+Coordinated LinkedIn outbound integrated with cold email sequences — connection requests, direct messages, and multi-touch follow-up designed to generate meetings from professional networks.
+
+**Appointment Setting**
+Full-cycle appointment setting: prospect qualification, objection handling, and booking directly onto client calendars with pre-briefed, qualified prospects.
+
+**ICP Research & Market Intelligence**
+Deep ideal customer profile (ICP) research, trigger-based targeting (funding rounds, hiring signals, technology changes), and ongoing contact enrichment to keep targeting precise.
+
+**Go-to-Market Execution**
+For early-stage teams or companies entering a new market, a complete outbound GTM motion built from scratch — ICP, messaging, infrastructure, and ongoing execution.
+
+## What Clients Get
+
+- 20–50 qualified sales meetings per month (target, varies by ICP and market)
+- Reply rate target: 8–15% (industry average is 3–5%)
+- Live in 14 days from contract signature
+- Real-time dashboard showing every email, reply, and meeting booked
+- Weekly performance reports and bi-weekly strategy calls
+- CRM integration (HubSpot, Salesforce, Pipedrive, Close, Attio)
+- Slack alerts when meetings are booked
+- Minimum meeting guarantee in every contract
+
+## Pricing
+
+- Starter: $2,500/month — cold email outbound, 20–30 meetings/month target
+- Growth: $5,000/month — cold email + LinkedIn, 30–50 meetings/month target
+- Scale: $10,000/month — full multi-channel GTM, intent data, 50+ meetings/month target
+
+All plans are month-to-month. No long-term contracts required.
+
+## Why Outbound, Why Now
+
+The average in-house SDR takes 6–9 months to ramp to consistent pipeline production. A managed outbound agency is live in two weeks. According to industry research, 73% of B2B buyers say a well-timed, relevant cold email is their preferred first point of contact from a new vendor. Companies that run outbound through a dedicated specialist consistently book 3× more meetings than those splitting the function across an AE or founder.
+
+## Our Approach
+
+1. **ICP Research** — We define the exact buyer profile, firmographic filters, and trigger signals that indicate a prospect is ready to buy. Precision over volume.
+
+2. **Infrastructure & Copy** — We build dedicated sending domains, run email warmup, write multi-step sequences optimized for your buyer, and A/B test subject lines and first lines continuously.
+
+3. **Launch & Iterate** — Campaigns go live in week two. We optimize weekly based on reply data. If open rates or reply rates underperform, sequences are rebuilt — not left to run.
+
+4. **Qualified Meetings** — Prospects who reply with interest are qualified, briefed, and booked directly onto your calendar. You receive a Slack alert and CRM entry for every meeting booked.
+
+## Frequently Asked Questions
+
+**How is Accelerated Growth different from other outbound agencies?**
+Most outbound agencies deliver a contact list and a three-step sequence. We build a full outbound engine — infrastructure, targeting, copy, optimization, and ongoing management — that improves over time. Every client gets a real-time dashboard, a dedicated strategist, and a minimum meeting guarantee in their contract.
+
+**Do you work with early-stage SaaS?**
+Yes. We work with companies from seed stage (pre-Series A) through Series C. The requirements are: a clear ICP, a product that is actively selling, and a founder or AE who can run discovery calls.
+
+**How quickly can we start seeing meetings?**
+Week 1: setup — sending domains, warmup, ICP research, sequence writing. Week 2: emails start going out. Most clients see their first booked meetings in weeks 2–3. Campaigns reach full velocity by month 2.
+
+**What is your meeting guarantee?**
+Every contract includes a minimum number of qualified meetings per month. If we fall short, we keep working at no extra charge until we make it up.
+
+**Do you only do cold email?**
+No. We run cold email as the primary channel and LinkedIn outreach as a coordinated secondary touch. We never contact the same prospect on both channels simultaneously — the approach is sequenced to maximize response.
+
+**What does "fully managed" mean?**
+We handle everything: contact sourcing, email infrastructure, copywriting, sending, reply handling, qualification, and booking. You receive a dashboard, weekly reports, bi-weekly strategy calls, and meeting notifications. No operational overhead required from your team.
+
+**What CRMs do you integrate with?**
+HubSpot, Salesforce, Pipedrive, Close, and Attio. Every booked meeting flows into your CRM with contact data, sequence history, and attribution.
+
+**Are you GDPR compliant?**
+Yes. All prospect data is sourced from legitimate B2B data providers using legitimate interest as the lawful basis for outreach. All emails include unsubscribe links. We sign Data Processing Agreements (DPAs) with clients upon request. Full privacy policy available at acceleratedgrowth.com/privacy.
+
+## Contact & Booking
+
+Book a free 30-minute strategy call: https://acceleratedgrowth.com/book
+
+The strategy call is free, no-pitch, and covers:
+- Your exact ICP and where to find them
+- A realistic meeting volume estimate for your market
+- Which outbound channels work best for your buyer
+- What a 90-day ramp looks like
+
+## Company Information
+
+- Name: Accelerated Growth
+- Type: B2B Outbound Sales Agency
+- Specialization: B2B SaaS companies exclusively
+- Service area: Worldwide (remote-first, all outreach in English)
+- Website: https://acceleratedgrowth.com
+- Booking: https://acceleratedgrowth.com/book
+- Blog: https://acceleratedgrowth.com/blog
+- Privacy Policy: https://acceleratedgrowth.com/privacy

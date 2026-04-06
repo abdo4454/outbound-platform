@@ -70,9 +70,46 @@ const STATS = [
   { value: "90 days", label: "To full campaign velocity" },
 ];
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  url: `${APP_URL}/about`,
+  name: "About Accelerated Growth — B2B SaaS Outbound Agency",
+  description:
+    "Accelerated Growth is a fully-managed outbound agency built exclusively for B2B SaaS companies. We handle cold email, LinkedIn outreach, ICP research, and appointment setting.",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Accelerated Growth",
+    url: APP_URL,
+    description:
+      "Done-for-you outbound agency for B2B SaaS companies. We build and run outbound engines that deliver 20–50 qualified sales meetings per month.",
+    serviceType: [
+      "B2B Outbound Sales",
+      "Appointment Setting",
+      "Cold Email Outreach",
+      "LinkedIn Outreach",
+      "Go-to-Market Execution",
+    ],
+    areaServed: "Worldwide",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: APP_URL },
+    { "@type": "ListItem", position: 2, name: "About", item: `${APP_URL}/about` },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
 
       {/* Hero */}

@@ -4,12 +4,33 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com";
+
 export const metadata: Metadata = {
-  title: "Blog | B2B SaaS Outbound & Cold Email Strategies",
+  title: "B2B SaaS Outbound Blog | Cold Email & Appointment Setting Playbooks",
   description:
-    "Outbound playbooks, cold email templates, go-to-market strategies, and appointment setting guides for B2B SaaS founders and sales leaders.",
+    "Practical guides on cold email, B2B appointment setting, go-to-market outbound strategy, and LinkedIn outreach — written by practitioners who run these campaigns daily.",
+  keywords: [
+    "cold email playbook",
+    "B2B appointment setting guide",
+    "outbound sales strategy",
+    "cold email reply rate",
+    "LinkedIn outreach B2B",
+    "go-to-market outbound",
+    "email deliverability guide",
+    "ICP research framework",
+    "SDR outbound tactics",
+    "B2B SaaS outbound blog",
+  ],
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://acceleratedgrowth.com"}/blog`,
+    canonical: `${APP_URL}/blog`,
+  },
+  openGraph: {
+    title: "B2B SaaS Outbound Blog | Cold Email & Appointment Setting Playbooks",
+    description:
+      "Practical outbound playbooks for B2B SaaS founders and sales leaders. Cold email, LinkedIn outreach, ICP research, and appointment setting — from practitioners who do this daily.",
+    url: `${APP_URL}/blog`,
+    type: "website",
   },
 };
 
@@ -72,9 +93,34 @@ const POSTS = [
 
 const CATEGORIES = ["All", "Cold Email", "Appointment Setting", "Go-to-Market", "Deliverability", "LinkedIn Outreach"];
 
+const blogListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "B2B SaaS Outbound Blog — Accelerated Growth",
+  description: "Practical outbound playbooks for B2B SaaS founders and sales leaders.",
+  url: `${APP_URL}/blog`,
+  itemListElement: POSTS.map((post, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `${APP_URL}/blog/${post.slug}`,
+    name: post.title,
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: APP_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${APP_URL}/blog` },
+  ],
+};
+
 export default function BlogPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
 
       {/* Hero */}

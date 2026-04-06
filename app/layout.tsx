@@ -91,28 +91,84 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   name: "Accelerated Growth",
   url: APP_URL,
-  logo: `${APP_URL}/og-image.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${APP_URL}/logo-icon.svg`,
+    contentUrl: `${APP_URL}/logo-icon.svg`,
+  },
+  image: `${APP_URL}/opengraph-image`,
   description:
-    "Done-for-you B2B SaaS outbound agency. We handle cold email, LinkedIn outreach, ICP research, and appointment setting for SaaS companies.",
-  sameAs: [],
+    "Accelerated Growth is a done-for-you B2B SaaS outbound agency specializing in cold email outreach, LinkedIn outbound, ICP research, and appointment setting. We deliver 20–50 qualified sales meetings per month for B2B SaaS companies.",
+  slogan: "Predictable pipeline for B2B SaaS companies.",
+  sameAs: [
+    "https://www.linkedin.com/company/acceleratedgrowth",
+    "https://twitter.com/accgrowth",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
     url: `${APP_URL}/book`,
+    availableLanguage: "English",
   },
-  areaServed: "Worldwide",
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide",
+  },
+  serviceType: [
+    "B2B Outbound Sales",
+    "Appointment Setting",
+    "Cold Email Outreach",
+    "LinkedIn Outreach",
+    "Sales Development",
+    "Go-to-Market Execution",
+  ],
   knowsAbout: [
     "B2B SaaS outbound sales",
-    "appointment setting",
+    "appointment setting for SaaS",
     "cold email outreach",
     "go-to-market strategy",
     "sales development",
     "pipeline generation",
     "LinkedIn outreach",
+    "ICP research",
+    "email deliverability",
+    "outbound sales sequencing",
+    "SDR as a service",
+    "outsourced sales development",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Outbound Agency Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Starter — Cold Email Outbound",
+        price: "2500",
+        priceCurrency: "USD",
+        description: "Fully managed cold email outbound. 20–30 qualified meetings/month target.",
+        eligibleCustomerType: "B2B SaaS companies, Seed to Series C",
+      },
+      {
+        "@type": "Offer",
+        name: "Growth — Cold Email + LinkedIn",
+        price: "5000",
+        priceCurrency: "USD",
+        description: "Cold email and LinkedIn outreach combined. 30–50 qualified meetings/month target.",
+        eligibleCustomerType: "B2B SaaS companies, Seed to Series C",
+      },
+      {
+        "@type": "Offer",
+        name: "Scale — Full GTM Outbound",
+        price: "10000",
+        priceCurrency: "USD",
+        description: "Full multi-channel outbound with intent data and dedicated strategy. 50+ qualified meetings/month target.",
+        eligibleCustomerType: "B2B SaaS companies, Series A to Series C",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

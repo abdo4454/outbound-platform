@@ -77,58 +77,90 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is appointment setting for B2B SaaS?",
+      name: "What is B2B appointment setting and how does it work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Appointment setting is the process of identifying ideal-fit prospects, reaching out via cold email or LinkedIn, handling replies, and booking qualified sales meetings directly onto your calendar. For B2B SaaS companies, this replaces or supplements an internal SDR team — giving you a consistent flow of qualified meetings without hiring.",
+        text: "B2B appointment setting is the process of identifying ideal-fit prospects, reaching out via cold email or LinkedIn, handling replies and objections, and booking qualified sales meetings directly onto your calendar. For B2B SaaS companies, it replaces or supplements an internal SDR team — giving you a consistent, predictable flow of pipeline without the overhead of hiring and managing reps.",
       },
     },
     {
       "@type": "Question",
-      name: "How does go-to-market outbound support work?",
+      name: "How does a fully managed outbound agency work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We embed into your go-to-market motion as a fully managed outbound layer. We handle ICP definition, contact sourcing, email infrastructure, copywriting, A/B testing, reply management, and CRM handoff. You focus on closing — we handle everything upstream.",
+        text: "A fully managed outbound agency embeds into your go-to-market motion as a done-for-you layer. At Accelerated Growth, we handle ICP definition, contact sourcing, email infrastructure setup, sequence copywriting, A/B testing, reply management, CRM handoff, and weekly reporting. You focus on running discovery calls and closing deals — we handle everything upstream from first contact to booked meeting.",
       },
     },
     {
       "@type": "Question",
-      name: "Do you work with early-stage SaaS or only funded companies?",
+      name: "What makes Accelerated Growth different from other outbound agencies?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We work with SaaS companies from seed stage to Series C. The main requirements are: you have a clear ICP, a product that's actively selling, and an AE (or founder) who can run discovery calls. Budget typically starts at $2,500/month.",
+        text: "Most outbound agencies deliver a contact list and a 3-step email sequence, then move on. Accelerated Growth builds a full, continuously optimized outbound engine: dedicated sending infrastructure, weekly optimization cycles, real-time client dashboards, and a minimum meeting guarantee in every contract. We're specialists in B2B SaaS specifically — not generalists who work across industries.",
       },
     },
     {
       "@type": "Question",
-      name: "How quickly can we start seeing meetings?",
+      name: "How much does B2B outbound agency services cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Week 1 is setup — domains, warm-up, sequence writing, and ICP targeting. Week 2 emails start going out. Most clients see their first booked meetings in week 2-3. By month 2 you're in full swing.",
+        text: "Accelerated Growth pricing starts at $2,500/month for the Starter plan (cold email, 20–30 meetings/month target), $5,000/month for Growth (cold email + LinkedIn, 30–50 meetings/month), and $10,000/month for Scale (full multi-channel outbound, 50+ meetings/month). All plans are month-to-month with no long-term contracts required.",
       },
     },
     {
       "@type": "Question",
-      name: "What cold email strategies do you use?",
+      name: "Is outbound sales more effective than inbound for B2B SaaS?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We combine hyper-personalized first lines, trigger-based targeting (funding rounds, hiring signals, tech stack changes), multi-step sequences, and rigorous deliverability management. The industry average reply rate is 3–5% — our target is 8–15%.",
+        text: "Outbound and inbound serve different purposes. Inbound attracts prospects who are actively searching — it's high intent but slow to build. Outbound finds your ideal buyers before they start searching — it's faster to results and fully predictable in volume. For B2B SaaS companies that need consistent pipeline now, outbound is the most reliable motion. The best go-to-market strategies use both, with outbound generating meetings while inbound builds long-term brand authority.",
       },
     },
     {
       "@type": "Question",
-      name: "What's your guarantee?",
+      name: "How quickly can a B2B SaaS company start seeing meetings from outbound?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We guarantee a minimum number of qualified meetings per month based on your ICP and plan. If we fall short, we keep working until we make it up — no extra charge. It's in the contract.",
+        text: "With Accelerated Growth, week 1 is setup: sending domains, warmup, ICP research, and sequence writing. Emails start going out in week 2. Most clients see their first booked meetings in weeks 2–3. By month 2, campaigns are at full velocity. This is significantly faster than building an internal SDR team, which typically takes 6–9 months to produce consistent pipeline.",
       },
     },
     {
       "@type": "Question",
-      name: "Do you run LinkedIn outreach too?",
+      name: "Do you work with early-stage SaaS startups?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, as an add-on or included in the Scale plan. LinkedIn outreach is coordinated with email — we never spray the same person on both channels at once. The two-touch approach (email first, LinkedIn follow-up after a reply or open) consistently lifts conversion by 20-30%.",
+        text: "Yes. Accelerated Growth works with B2B SaaS companies from seed stage through Series C. The requirements are: a clear ideal customer profile (ICP), a product that is actively selling, and a founder or account executive who can run discovery calls. Budget starts at $2,500/month.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is a realistic cold email reply rate for B2B outbound?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The industry average cold email reply rate is 3–5% for most B2B outbound campaigns. High-performing campaigns targeting well-defined ICPs with personalized messaging and strong deliverability can reach 8–15%. The key drivers are ICP precision, first-line personalization, sequence structure, sending domain reputation, and trigger-based targeting (funding rounds, hiring surges, tech stack signals).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What's the difference between an SDR agency and an appointment setting agency?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "An SDR agency provides outsourced sales development representatives who prospect and qualify leads. An appointment setting agency focuses specifically on booking qualified meetings onto your calendar. Accelerated Growth combines both: we handle all SDR functions (prospecting, outreach, qualification) and the output is booked meetings with briefed, pre-qualified buyers — not just a list of leads to follow up on yourself.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer LinkedIn outreach alongside cold email?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. LinkedIn outreach is included in the Growth and Scale plans, and available as an add-on for Starter clients. We coordinate email and LinkedIn sequences so the same prospect is never contacted on both channels simultaneously — the approach is sequenced to maximize response without appearing spammy. A two-touch approach (email first, LinkedIn follow-up) consistently lifts overall conversion rates.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is your meeting guarantee?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Every Accelerated Growth contract includes a minimum number of qualified meetings per month based on your ICP, market size, and plan. If we fall short in any given month, we keep working at no extra charge until we make it up. This guarantee is written into every contract — not a verbal promise.",
       },
     },
     {
@@ -136,7 +168,7 @@ const faqSchema = {
       name: "What CRMs do you integrate with?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "HubSpot, Salesforce, Pipedrive, Close, and Attio. Every booked meeting flows directly into your pipeline with contact data, sequence history, and full attribution. We also sync to Slack so you get a ping every time a meeting is booked.",
+        text: "Accelerated Growth integrates with HubSpot, Salesforce, Pipedrive, Close, and Attio. Every booked meeting flows directly into your pipeline with contact data, sequence history, and full attribution. We also send real-time Slack alerts every time a meeting is booked.",
       },
     },
   ],
