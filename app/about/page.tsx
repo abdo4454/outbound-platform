@@ -36,33 +36,6 @@ const VALUES = [
   },
 ];
 
-const TEAM = [
-  {
-    name: "Alex Rivera",
-    title: "Founder & CEO",
-    bio: "Former SDR and sales leader with years of B2B SaaS experience. Built Accelerated Growth to give founders access to the outbound infrastructure most companies can't build in-house.",
-    initials: "AR",
-  },
-  {
-    name: "Maya Patel",
-    title: "Head of Strategy",
-    bio: "Deep background in B2B outbound strategy. Personally designs the ICP research, messaging, and sequence structure for every new client campaign.",
-    initials: "MP",
-  },
-  {
-    name: "Jordan Kim",
-    title: "Head of Deliverability",
-    bio: "The technical mind behind our sending infrastructure. Owns domain setup, warmup protocols, and inbox placement — the unglamorous work that makes outbound actually land.",
-    initials: "JK",
-  },
-  {
-    name: "Sam Torres",
-    title: "Client Success Lead",
-    bio: "Makes sure every client hits their meeting targets. Owns weekly reports, optimization cycles, and client communication. The person keeping campaigns moving.",
-    initials: "ST",
-  },
-];
-
 const STATS = [
   { value: "20–50", label: "Target meetings / month" },
   { value: "8–15%", label: "Reply rate target" },
