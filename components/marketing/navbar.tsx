@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Pricing", href: "#pricing" },
   { label: "Free Audit", href: "/audit" },
   { label: "About", href: "/about" },
+  { label: "How We Work", href: "/culture" },
 ];
 
 export function Navbar() {
