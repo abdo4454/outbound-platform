@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
-import { ArrowRight, CheckCircle2, Download } from "lucide-react";
+import { ArrowRight, CheckCircle2, Download, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -56,7 +56,7 @@ const CHAPTERS = [
   },
   {
     number: "05",
-    title: "Optimization: Going from 5% to 18% Reply Rate",
+    title: "Optimization: Making the Machine Better Each Week",
     topics: [
       "What metrics actually matter (and which don't)",
       "Weekly optimization cadence",
@@ -88,12 +88,12 @@ export default function PlaybookPage() {
             <span className="text-gradient-dark">Cold Email Playbook</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-            Everything we&apos;ve learned from running cold email for 50+ B2B SaaS companies. ICP research, deliverability setup, sequence templates, and the optimization process that gets us to 18%+ reply rates.
+            A practical guide to cold email outbound for B2B SaaS companies. ICP research, deliverability setup, sequence templates, reply handling, and a weekly optimization process. No fluff.
           </p>
-          <Link href="/book" className="btn-primary btn-lg inline-flex">
-            Get the Playbook Free <ArrowRight className="w-5 h-5" />
+          <Link href="/resources/playbook/download" className="btn-primary btn-lg inline-flex">
+            <Download className="w-5 h-5" /> Read & Download Free
           </Link>
-          <p className="text-gray-500 text-sm mt-3">Delivered on your strategy call — takes 30 seconds to book</p>
+          <p className="text-gray-500 text-sm mt-3">Opens instantly — no email required. Print to PDF from your browser.</p>
         </div>
       </section>
 
@@ -102,7 +102,7 @@ export default function PlaybookPage() {
         <div className="section max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="font-display text-display-sm text-gray-900 mb-3">What&apos;s inside</h2>
-            <p className="text-lg text-gray-500">5 chapters. Everything you need to go from 0 to 30+ meetings per month.</p>
+            <p className="text-lg text-gray-500">5 chapters. Everything you need to build and run a cold email outbound motion.</p>
           </div>
 
           <div className="space-y-6">
@@ -129,15 +129,19 @@ export default function PlaybookPage() {
           {/* CTA */}
           <div className="mt-14 bg-midnight-950 rounded-2xl p-10 text-center">
             <h3 className="font-display text-2xl font-bold text-white mb-3">
-              Get the full playbook free
+              Read the full playbook
             </h3>
             <p className="text-gray-400 mb-6 max-w-md mx-auto">
-              Book a free strategy call and we&apos;ll walk through the playbook live — applied to your specific SaaS market and ICP.
+              Open it now, read it in your browser, and save as PDF. Or book a free call and we&apos;ll walk through it live — applied to your specific market and ICP.
             </p>
-            <Link href="/book" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors group">
-              Book Your Free Call
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/resources/playbook/download" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors">
+                <Download className="w-5 h-5" /> Open Playbook
+              </Link>
+              <Link href="/book" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors border border-white/10">
+                Book a Strategy Call <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

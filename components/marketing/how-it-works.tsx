@@ -13,7 +13,7 @@ const STEPS = [
     step: "02",
     title: "We Build & Launch",
     description:
-      "Our team sets up warmed sending domains, builds your prospect list from Apollo and LinkedIn, writes short personalized sequences, and launches within one week. You approve everything first.",
+      "Our team sets up warmed sending domains, builds your prospect list from professional networks and B2B data sources, writes short personalized sequences, and launches within two weeks. You approve everything first.",
   },
   {
     icon: CalendarCheck,

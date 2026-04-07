@@ -52,7 +52,7 @@ export function Results() {
             <br className="hidden sm:block" /> pipeline from scratch
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Every engagement follows the same four-phase system — built on years of B2B outbound experience and refined on hundreds of campaigns.
+            Every engagement follows the same four-phase system — built for predictable, repeatable results and designed to improve every week it runs.
           </p>
         </div>
 

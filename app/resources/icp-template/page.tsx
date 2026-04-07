@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
-import { ArrowRight, CheckCircle2, Target, TrendingUp, Users, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, Download, Target, TrendingUp, Users, Zap } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -23,7 +23,7 @@ const SECTIONS = [
   {
     icon: Zap,
     title: "Technographic triggers",
-    description: "The tech stack signals that indicate buying intent. Companies using complementary or competing tools are 3x more likely to convert.",
+    description: "The tech stack signals that indicate buying intent. Companies using complementary or competing tools have already proven willingness to buy in your category.",
     fields: ["Current tech stack (CRM, ERP, etc.)", "Competing products they use", "Integration triggers", "Tech spend signals", "Recent tool migrations"],
   },
   {
@@ -61,12 +61,12 @@ export default function ICPTemplatePage() {
             <span className="text-gradient-dark">ICP Template</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-            The ideal customer profile framework we use for every client. Firmographics, technographics, buying triggers, and persona mapping — the foundation that separates 18% reply rates from 2%.
+            A structured ICP framework covering firmographics, technographics, buying triggers, and persona mapping — the foundation of any outbound campaign that actually converts.
           </p>
-          <Link href="/book" className="btn-primary btn-lg inline-flex">
-            Get the Template Free <ArrowRight className="w-5 h-5" />
+          <Link href="/resources/icp-template/download" className="btn-primary btn-lg inline-flex">
+            <Download className="w-5 h-5" /> Open Template Free
           </Link>
-          <p className="text-gray-500 text-sm mt-3">Delivered on your strategy call</p>
+          <p className="text-gray-500 text-sm mt-3">Opens instantly — no email required. Print to PDF from your browser.</p>
         </div>
       </section>
 
@@ -77,7 +77,7 @@ export default function ICPTemplatePage() {
             Why ICP precision is everything
           </h2>
           <p className="text-gray-600 leading-relaxed text-lg">
-            The single biggest driver of cold email performance isn&apos;t your subject line or your copy — it&apos;s whether you&apos;re emailing the right people. A precisely defined ICP lifts reply rates from 2–3% (industry average) to 15–22%. Every other optimization is secondary.
+            The single biggest driver of cold email performance is not your subject line or your copy — it is whether you are emailing the right people. A precisely defined ICP with real targeting signals is what separates campaigns that get replies from campaigns that get ignored. Every other optimization is secondary.
           </p>
         </div>
       </section>
@@ -111,15 +111,19 @@ export default function ICPTemplatePage() {
           {/* CTA */}
           <div className="mt-14 bg-midnight-950 rounded-2xl p-10 text-center">
             <h3 className="font-display text-2xl font-bold text-white mb-3">
-              Get the ICP template + a live walkthrough
+              Open the template now
             </h3>
             <p className="text-gray-400 mb-6 max-w-md mx-auto">
-              Book a free call and we&apos;ll fill out the template with you — applied to your actual market and buyer personas.
+              Fill it out yourself, or book a free call and we&apos;ll work through it with you — applied to your actual market and buyer personas.
             </p>
-            <Link href="/book" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors group">
-              Book Free Strategy Call
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/resources/icp-template/download" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors">
+                <Download className="w-5 h-5" /> Open Template
+              </Link>
+              <Link href="/book" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors border border-white/10">
+                Book a Strategy Call <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

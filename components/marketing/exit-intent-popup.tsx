@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { X, ArrowRight, CheckCircle2 } from "lucide-react";
+import { X, ArrowRight, CheckCircle2, Download } from "lucide-react";
+import Link from "next/link";
 import { pixel } from "@/lib/pixel";
 
 export function ExitIntentPopup() {
@@ -98,11 +99,17 @@ export function ExitIntentPopup() {
               <CheckCircle2 className="w-8 h-8 text-green-400" />
             </div>
             <h3 className="font-display text-xl font-bold text-white mb-2">
-              It&apos;s on its way!
+              Got it — here&apos;s the playbook
             </h3>
-            <p className="text-gray-400">
-              Check your inbox for the B2B SaaS Outbound Playbook.
+            <p className="text-gray-400 mb-6">
+              Open it now, read in your browser, and save as PDF.
             </p>
+            <Link
+              href="/resources/playbook/download"
+              className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+            >
+              <Download className="w-4 h-4" /> Open Playbook
+            </Link>
           </div>
         ) : (
           <>
@@ -116,15 +123,15 @@ export function ExitIntentPopup() {
               Before you go — grab the playbook
             </h2>
             <p className="text-gray-400 mb-1 text-sm">
-              <span className="text-white font-semibold">The B2B SaaS Outbound Playbook:</span> How we book 30–50 qualified meetings/month for SaaS companies.
+              <span className="text-white font-semibold">The B2B SaaS Outbound Playbook:</span> A practical guide to building a cold email engine — from ICP to optimization.
             </p>
 
             <ul className="space-y-1.5 mb-6 mt-4">
               {[
-                "The exact 3-step cold email sequence that gets 18%+ reply rates",
-                "ICP definition framework for SaaS buyers",
-                "How to handle 6 common objections and convert them",
-                "Our domain warmup checklist (avoid spam folders)",
+                "ICP definition framework — firmographics, triggers, technographics",
+                "Cold email sequence structure with subject line formulas",
+                "How to handle the 6 most common objections",
+                "Domain warmup checklist and deliverability setup",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
                   <CheckCircle2 className="w-4 h-4 text-brand-400 mt-0.5 flex-shrink-0" />
